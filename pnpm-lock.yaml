@@ -91,12 +91,238 @@ importers:
 
   apps/docs:
     dependencies:
+      jamaica-addresses:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-addresses/ts
+      jamaica-banks:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-banks/ts
+      jamaica-constants:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-constants/ts
+      jamaica-currency:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-currency/ts
+      jamaica-emergency:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-emergency/ts
+      jamaica-gov-fees:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-gov-fees/ts
+      jamaica-health:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-health/ts
+      jamaica-holidays:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-holidays/ts
+      jamaica-parishes:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-parishes/ts
+      jamaica-phone:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-phone/ts
+      jamaica-schools:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-schools/ts
+      jamaica-tax:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-tax/ts
+      jamaica-trn:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-trn/ts
       vitepress:
         specifier: ^1.6.0
         version: 1.6.4(@algolia/client-search@5.49.0)(@types/node@22.19.11)(postcss@8.5.6)(search-insights@2.17.3)(typescript@5.9.3)
       vue:
         specifier: ^3.5.0
         version: 3.5.28(typescript@5.9.3)
+
+  examples/checkout-demo:
+    dependencies:
+      jamaica-addresses:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-addresses/ts
+      jamaica-currency:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-currency/ts
+      jamaica-parishes:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-parishes/ts
+      jamaica-phone:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-phone/ts
+      next:
+        specifier: ^15.1.0
+        version: 15.5.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      react:
+        specifier: ^19.0.0
+        version: 19.2.4
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.4(react@19.2.4)
+    devDependencies:
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.19.11
+      '@types/react':
+        specifier: ^19.0.0
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.0.0
+        version: 19.2.3(@types/react@19.2.14)
+      autoprefixer:
+        specifier: ^10.4.0
+        version: 10.4.24(postcss@8.5.6)
+      postcss:
+        specifier: ^8.4.0
+        version: 8.5.6
+      tailwindcss:
+        specifier: ^3.4.0
+        version: 3.4.19
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
+
+  examples/gov-services-portal:
+    dependencies:
+      jamaica-currency:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-currency/ts
+      jamaica-gov-fees:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-gov-fees/ts
+      jamaica-holidays:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-holidays/ts
+      jamaica-trn:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-trn/ts
+      next:
+        specifier: ^15.1.0
+        version: 15.5.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      react:
+        specifier: ^19.0.0
+        version: 19.2.4
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.4(react@19.2.4)
+    devDependencies:
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.19.11
+      '@types/react':
+        specifier: ^19.0.0
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.0.0
+        version: 19.2.3(@types/react@19.2.14)
+      autoprefixer:
+        specifier: ^10.4.0
+        version: 10.4.24(postcss@8.5.6)
+      postcss:
+        specifier: ^8.4.0
+        version: 8.5.6
+      tailwindcss:
+        specifier: ^3.4.0
+        version: 3.4.19
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
+
+  examples/parish-dashboard:
+    dependencies:
+      jamaica-banks:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-banks/ts
+      jamaica-emergency:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-emergency/ts
+      jamaica-health:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-health/ts
+      jamaica-parishes:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-parishes/ts
+      jamaica-places:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-places/ts
+      jamaica-schools:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-schools/ts
+      next:
+        specifier: ^15.1.0
+        version: 15.5.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      react:
+        specifier: ^19.0.0
+        version: 19.2.4
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.4(react@19.2.4)
+    devDependencies:
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.19.11
+      '@types/react':
+        specifier: ^19.0.0
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.0.0
+        version: 19.2.3(@types/react@19.2.14)
+      autoprefixer:
+        specifier: ^10.4.0
+        version: 10.4.24(postcss@8.5.6)
+      postcss:
+        specifier: ^8.4.0
+        version: 8.5.6
+      tailwindcss:
+        specifier: ^3.4.0
+        version: 3.4.19
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
+
+  examples/payroll-calculator:
+    dependencies:
+      jamaica-currency:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-currency/ts
+      jamaica-tax:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-tax/ts
+      jamaica-trn:
+        specifier: workspace:*
+        version: link:../../toolkit/jamaica-trn/ts
+      next:
+        specifier: ^15.1.0
+        version: 15.5.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      react:
+        specifier: ^19.0.0
+        version: 19.2.4
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.4(react@19.2.4)
+    devDependencies:
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.19.11
+      '@types/react':
+        specifier: ^19.0.0
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.0.0
+        version: 19.2.3(@types/react@19.2.14)
+      autoprefixer:
+        specifier: ^10.4.0
+        version: 10.4.24(postcss@8.5.6)
+      postcss:
+        specifier: ^8.4.0
+        version: 8.5.6
+      tailwindcss:
+        specifier: ^3.4.0
+        version: 3.4.19
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
 
   packages/eslint-config:
     devDependencies:

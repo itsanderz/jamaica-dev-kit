@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f8f9fa;
+  --bg-mute: #f1f3f5;
+  --text-primary: #0a0a0f;
+  --text-secondary: #4a4a5a;
+  --text-muted: #8a8a9a;
+  --border: rgba(0, 0, 0, 0.08);
+  --brand: #009B3A;
+  --brand-soft: rgba(0, 155, 58, 0.1);
+}
+
+.dark {
+  --bg: #0a0a0f;
+  --bg-soft: #12121a;
+  --bg-mute: #1a1a25;
+  --text-primary: #e8e8ed;
+  --text-secondary: #b8b8c0;
+  --text-muted: #6a6a78;
+  --border: rgba(255, 255, 255, 0.08);
+  --brand: #00C44A;
+  --brand-soft: rgba(0, 196, 74, 0.12);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}

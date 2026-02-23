@@ -15,6 +15,7 @@ export default defineConfig({
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'Packages', link: '/packages/overview' },
+      { text: 'Playground', link: '/playground/' },
       { text: 'Sectors', link: '/sectors/fintech' },
       { text: 'CLI', link: '/cli/' },
       { text: 'Examples', link: '/examples/common-patterns' },
@@ -92,6 +93,22 @@ export default defineConfig({
           items: [
             { text: 'jamaica-boj', link: '/packages/boj' },
             { text: 'jamaica-open-data', link: '/packages/open-data' },
+          ],
+        },
+      ],
+      '/playground/': [
+        {
+          text: 'Playground',
+          items: [
+            { text: 'Overview', link: '/playground/' },
+            { text: 'TRN Validator', link: '/playground/trn' },
+            { text: 'Phone Formatter', link: '/playground/phone' },
+            { text: 'Currency & GCT', link: '/playground/currency' },
+            { text: 'Payroll Calculator', link: '/playground/payroll' },
+            { text: 'Address Parser', link: '/playground/address' },
+            { text: 'Government Fees', link: '/playground/fees' },
+            { text: 'Public Holidays', link: '/playground/holidays' },
+            { text: 'Parish Explorer', link: '/playground/parishes' },
           ],
         },
       ],

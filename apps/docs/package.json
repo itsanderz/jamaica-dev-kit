@@ -9,6 +9,19 @@
   },
   "dependencies": {
     "vitepress": "^1.6.0",
-    "vue": "^3.5.0"
+    "vue": "^3.5.0",
+    "jamaica-trn": "workspace:*",
+    "jamaica-phone": "workspace:*",
+    "jamaica-currency": "workspace:*",
+    "jamaica-tax": "workspace:*",
+    "jamaica-addresses": "workspace:*",
+    "jamaica-parishes": "workspace:*",
+    "jamaica-gov-fees": "workspace:*",
+    "jamaica-holidays": "workspace:*",
+    "jamaica-banks": "workspace:*",
+    "jamaica-schools": "workspace:*",
+    "jamaica-health": "workspace:*",
+    "jamaica-emergency": "workspace:*",
+    "jamaica-constants": "workspace:*"
   }
 }

@@ -246,6 +246,69 @@ parish.capital               <span class="t-cm">// "Kingston"</span></code></pre
       </div>
     </section>
 
+    <!-- ============ PLAYGROUND ============ -->
+    <section class="playground-section">
+      <div class="playground-inner">
+        <div class="section-header">
+          <h2 class="section-title">Try it live</h2>
+          <p class="section-subtitle">
+            8 interactive playgrounds — experiment with every toolkit function directly in your browser.
+            No installation required.
+          </p>
+        </div>
+
+        <div class="playground-grid">
+          <a href="/playground/trn" class="playground-card">
+            <span class="playground-card-icon">#</span>
+            <span class="playground-card-title">TRN Validator</span>
+            <span class="playground-card-desc">Validate, format, and generate test TRNs</span>
+          </a>
+          <a href="/playground/phone" class="playground-card">
+            <span class="playground-card-icon">P</span>
+            <span class="playground-card-title">Phone Formatter</span>
+            <span class="playground-card-desc">Parse and format Jamaican phone numbers</span>
+          </a>
+          <a href="/playground/currency" class="playground-card">
+            <span class="playground-card-icon">$</span>
+            <span class="playground-card-title">Currency & GCT</span>
+            <span class="playground-card-desc">Format JMD, calculate GCT, convert to USD</span>
+          </a>
+          <a href="/playground/payroll" class="playground-card">
+            <span class="playground-card-icon">%</span>
+            <span class="playground-card-title">Payroll Calculator</span>
+            <span class="playground-card-desc">PAYE, NIS, NHT, education tax breakdown</span>
+          </a>
+          <a href="/playground/address" class="playground-card">
+            <span class="playground-card-icon">A</span>
+            <span class="playground-card-title">Address Parser</span>
+            <span class="playground-card-desc">Parse informal addresses into components</span>
+          </a>
+          <a href="/playground/fees" class="playground-card">
+            <span class="playground-card-icon">G</span>
+            <span class="playground-card-title">Government Fees</span>
+            <span class="playground-card-desc">Search 60+ fees across 10 agencies</span>
+          </a>
+          <a href="/playground/holidays" class="playground-card">
+            <span class="playground-card-icon">H</span>
+            <span class="playground-card-title">Public Holidays</span>
+            <span class="playground-card-desc">Holiday calendar and business day counter</span>
+          </a>
+          <a href="/playground/parishes" class="playground-card">
+            <span class="playground-card-icon">M</span>
+            <span class="playground-card-title">Parish Explorer</span>
+            <span class="playground-card-desc">14 parishes with stats and distance calculator</span>
+          </a>
+        </div>
+
+        <div class="playground-cta">
+          <a href="/playground/" class="btn btn--primary">
+            Open Playground
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ SECTORS ============ -->
     <section class="sectors">
       <div class="sectors-inner">
@@ -338,9 +401,16 @@ parish.capital               <span class="t-cm">// "Kingston"</span></code></pre
             Get Started
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="/packages/overview" class="btn btn--ghost btn--lg">
-            Browse Packages
+          <a href="/playground/" class="btn btn--ghost btn--lg">
+            Try Playground
           </a>
+        </div>
+        <div class="cta-examples">
+          <span class="cta-examples-label">Example Apps:</span>
+          <a href="https://github.com/jamaica-digital/jamaica/tree/main/examples/payroll-calculator" class="cta-example-link">Payroll Calculator</a>
+          <a href="https://github.com/jamaica-digital/jamaica/tree/main/examples/parish-dashboard" class="cta-example-link">Parish Dashboard</a>
+          <a href="https://github.com/jamaica-digital/jamaica/tree/main/examples/gov-services-portal" class="cta-example-link">Gov Services</a>
+          <a href="https://github.com/jamaica-digital/jamaica/tree/main/examples/checkout-demo" class="cta-example-link">Checkout Demo</a>
         </div>
       </div>
     </section>
@@ -864,6 +934,77 @@ parish.capital               <span class="t-cm">// "Kingston"</span></code></pre
   color: var(--landing-green);
 }
 
+/* ===== PLAYGROUND ===== */
+.playground-section {
+  padding: 100px 24px;
+  background: var(--landing-bg-subtle);
+  border-top: 1px solid var(--landing-border);
+  border-bottom: 1px solid var(--landing-border);
+}
+
+.playground-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.playground-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.playground-card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: var(--landing-bg);
+  border: 1px solid var(--landing-card-border);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.playground-card:hover {
+  border-color: rgba(0, 155, 58, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.playground-card-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--landing-card-bg);
+  border: 1px solid var(--landing-card-border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--landing-green);
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 12px;
+}
+
+.playground-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--landing-text);
+  margin-bottom: 4px;
+}
+
+.playground-card-desc {
+  font-size: 12px;
+  color: var(--landing-text-tertiary);
+  line-height: 1.5;
+}
+
+.playground-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
 /* ===== SECTORS ===== */
 .sectors {
   padding: 100px 24px;
@@ -977,6 +1118,34 @@ parish.capital               <span class="t-cm">// "Kingston"</span></code></pre
   gap: 12px;
 }
 
+.cta-examples {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.cta-examples-label {
+  font-size: 13px;
+  color: var(--landing-text-tertiary);
+  font-weight: 500;
+}
+
+.cta-example-link {
+  font-size: 13px;
+  color: var(--landing-green);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.cta-example-link:hover {
+  color: var(--landing-green-light);
+  text-decoration: underline;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .features-grid {
@@ -984,6 +1153,9 @@ parish.capital               <span class="t-cm">// "Kingston"</span></code></pre
   }
   .packages-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .playground-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
   .sectors-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1015,6 +1187,10 @@ parish.capital               <span class="t-cm">// "Kingston"</span></code></pre
 
   .packages-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .playground-grid {
+    grid-template-columns: 1fr;
   }
 
   .sectors-grid {

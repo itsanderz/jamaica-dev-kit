@@ -8,6 +8,7 @@ export default defineConfig({
     hostname: 'https://itsanderz.github.io/jamaica-dev-kit/',
   },
   head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/jamaica-dev-kit/favicon.svg' }],
     ['meta', { name: 'theme-color', content: '#009B3A' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],

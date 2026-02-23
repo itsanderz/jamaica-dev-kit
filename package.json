@@ -11,6 +11,7 @@
     "lint:python": "uv run ruff check .",
     "format": "turbo format",
     "format:python": "uv run ruff format .",
+    "typecheck": "turbo typecheck",
     "clean": "turbo clean",
     "changeset": "changeset",
     "version": "changeset version",

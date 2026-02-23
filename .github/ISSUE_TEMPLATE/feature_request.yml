@@ -1,0 +1,80 @@
+name: Feature Request
+description: Suggest a new feature or improvement for the Jamaica Developer Kit
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a feature. Please describe your idea so we can evaluate it and discuss the best approach.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: A clear and concise summary of the feature you would like to see.
+      placeholder: Describe the feature in a few sentences.
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Explain the problem this feature would solve or the workflow it would improve.
+      placeholder: |
+        As a developer building a Jamaican payroll app, I need to...
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution
+      description: If you have a specific implementation idea, describe it here.
+      placeholder: |
+        Add a new function `calculatePayroll()` that accepts...
+    validations:
+      required: false
+
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package
+      description: Which package is this feature related to?
+      options:
+        - jamaica-trn
+        - jamaica-phone
+        - jamaica-addresses
+        - jamaica-constants
+        - jamaica-currency
+        - jamaica-tax
+        - jamaica-banks
+        - jamaica-gov-fees
+        - jamaica-parishes
+        - jamaica-places
+        - jamaica-constituencies
+        - jamaica-transport
+        - jamaica-schools
+        - jamaica-health
+        - jamaica-emergency
+        - jamaica-holidays
+        - jamaica-zod
+        - jamaica-react
+        - jamaica-express
+        - jamaica-boj
+        - jamaica-open-data
+        - jamaica-cli
+        - jamaica (meta)
+        - Other
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Describe any alternative solutions or workarounds you have considered.
+      placeholder: I considered using... but it does not work because...
+    validations:
+      required: false

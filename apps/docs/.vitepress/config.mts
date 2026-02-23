@@ -1,10 +1,11 @@
 import { defineConfig } from 'vitepress';
 
 export default defineConfig({
+  base: '/jamaica-dev-kit/',
   title: 'Jamaica Developer Kit',
   description: 'The definitive open-source toolkit for building Jamaica-focused applications. 21 packages for identity, finance, geography, education, health, developer experience, and live data.',
   sitemap: {
-    hostname: 'https://jamaica.digital',
+    hostname: 'https://itsanderz.github.io/jamaica-dev-kit/',
   },
   head: [
     ['meta', { name: 'theme-color', content: '#009B3A' }],
@@ -172,7 +173,7 @@ export default defineConfig({
       ],
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/jamaica-digital/jamaica' },
+      { icon: 'github', link: 'https://github.com/itsanderz/jamaica-dev-kit' },
     ],
     search: {
       provider: 'local',

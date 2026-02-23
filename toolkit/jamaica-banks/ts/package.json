@@ -16,6 +16,16 @@
   },
   "keywords": ["jamaica", "banks", "banking", "fintech", "ncb", "scotia", "jn"],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamaica-digital/jamaica.git",
+    "directory": "toolkit/jamaica-banks/ts"
+  },
+  "homepage": "https://jamaica.digital/packages/banks",
+  "bugs": "https://github.com/jamaica-digital/jamaica/issues",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@jamaica-digital/tsconfig": "workspace:*",
     "tsup": "^8.0.0",

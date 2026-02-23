@@ -16,6 +16,16 @@
   },
   "keywords": ["jamaica", "react", "hooks", "components", "trn", "phone", "parish"],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamaica-digital/jamaica.git",
+    "directory": "toolkit/jamaica-react/ts"
+  },
+  "homepage": "https://jamaica.digital/packages/react",
+  "bugs": "https://github.com/jamaica-digital/jamaica/issues",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0"
   },

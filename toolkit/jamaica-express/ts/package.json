@@ -16,6 +16,16 @@
   },
   "keywords": ["jamaica", "express", "middleware", "validation", "trn", "phone", "gct"],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamaica-digital/jamaica.git",
+    "directory": "toolkit/jamaica-express/ts"
+  },
+  "homepage": "https://jamaica.digital/packages/express",
+  "bugs": "https://github.com/jamaica-digital/jamaica/issues",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "express": "^4.18.0 || ^5.0.0"
   },

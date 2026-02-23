@@ -3,11 +3,34 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
   title: 'Jamaica Developer Kit',
   description: 'The definitive open-source toolkit for building Jamaica-focused applications. 21 packages for identity, finance, geography, education, health, developer experience, and live data.',
+  sitemap: {
+    hostname: 'https://jamaica.digital',
+  },
   head: [
     ['meta', { name: 'theme-color', content: '#009B3A' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
     ['link', { href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap', rel: 'stylesheet' }],
+
+    // Open Graph
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:title', content: 'Jamaica Developer Kit' }],
+    ['meta', { property: 'og:description', content: 'The definitive open-source toolkit for building Jamaica-focused applications. 21 packages for identity, finance, geography, education, health, DX, and live data.' }],
+    ['meta', { property: 'og:image', content: 'https://jamaica.digital/og-image.svg' }],
+    ['meta', { property: 'og:url', content: 'https://jamaica.digital' }],
+    ['meta', { property: 'og:site_name', content: 'Jamaica Developer Kit' }],
+    ['meta', { property: 'og:locale', content: 'en_US' }],
+
+    // Twitter Card
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:title', content: 'Jamaica Developer Kit' }],
+    ['meta', { name: 'twitter:description', content: '21 production-ready packages for building Jamaica-focused applications. TypeScript & Python. Zero dependencies.' }],
+    ['meta', { name: 'twitter:image', content: 'https://jamaica.digital/og-image.svg' }],
+
+    // Additional SEO
+    ['meta', { name: 'robots', content: 'index, follow' }],
+    ['meta', { name: 'author', content: 'Jamaica Digital' }],
+    ['link', { rel: 'canonical', href: 'https://jamaica.digital' }],
   ],
   themeConfig: {
     logo: { light: '/logo.svg', dark: '/logo.svg' },

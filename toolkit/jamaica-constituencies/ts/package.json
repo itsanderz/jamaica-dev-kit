@@ -16,6 +16,16 @@
   },
   "keywords": ["jamaica", "constituencies", "electoral", "parliament", "civic-tech"],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamaica-digital/jamaica.git",
+    "directory": "toolkit/jamaica-constituencies/ts"
+  },
+  "homepage": "https://jamaica.digital/packages/constituencies",
+  "bugs": "https://github.com/jamaica-digital/jamaica/issues",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@jamaica-digital/tsconfig": "workspace:*",
     "tsup": "^8.0.0",

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DarkModeToggle } from '../components/DarkModeToggle';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -8,7 +9,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('theme');var d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches);if(d)document.documentElement.classList.add('dark')})()` }} />
+      </head>
       <body className="min-h-screen">
         <header className="border-b border-[var(--border)] backdrop-blur-md sticky top-0 z-50 bg-[var(--bg)]/80">
           <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
@@ -18,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 Jamaica Dev Kit
               </span>
             </div>
+            <DarkModeToggle />
           </div>
         </header>
         <main className="max-w-7xl mx-auto px-6 py-8">{children}</main>

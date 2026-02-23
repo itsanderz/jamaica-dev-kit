@@ -3,6 +3,17 @@ name = "jamaica"
 version = "0.1.0"
 description = "The complete Jamaica developer toolkit"
 requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Jamaica Digital", email = "oss@jamaica.digital"}]
+keywords = ["jamaica", "developer-toolkit", "caribbean", "utilities"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Typing :: Typed",
+]
 dependencies = [
   "jamaica-trn>=0.1.0",
   "jamaica-parishes>=0.1.0",
@@ -21,6 +32,11 @@ dependencies = [
   "jamaica-emergency>=0.1.0",
   "jamaica-places>=0.1.0",
 ]
+
+[project.urls]
+Homepage = "https://jamaica.digital"
+Documentation = "https://jamaica.digital"
+Repository = "https://github.com/jamaica-digital/jamaica"
 
 [build-system]
 requires = ["hatchling"]

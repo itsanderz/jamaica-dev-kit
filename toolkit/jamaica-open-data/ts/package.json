@@ -16,6 +16,16 @@
   },
   "keywords": ["jamaica", "open-data", "data-gov-jm", "dkan", "government", "datasets"],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamaica-digital/jamaica.git",
+    "directory": "toolkit/jamaica-open-data/ts"
+  },
+  "homepage": "https://jamaica.digital/packages/open-data",
+  "bugs": "https://github.com/jamaica-digital/jamaica/issues",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {},
   "devDependencies": {
     "@jamaica-digital/tsconfig": "workspace:*",

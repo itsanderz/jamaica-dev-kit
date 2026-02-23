@@ -3,6 +3,22 @@ name = "jamaica-constituencies"
 version = "0.1.0"
 description = "Jamaica electoral constituencies — all 63 with parish mapping"
 requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Jamaica Digital", email = "oss@jamaica.digital"}]
+keywords = ["jamaica", "constituencies", "electoral", "politics", "voting"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://jamaica.digital"
+Documentation = "https://jamaica.digital/packages/constituencies"
+Repository = "https://github.com/jamaica-digital/jamaica"
 
 [build-system]
 requires = ["hatchling"]

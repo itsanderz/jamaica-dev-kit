@@ -16,6 +16,16 @@
   },
   "keywords": ["jamaica", "constants", "country", "iso", "timezone"],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamaica-digital/jamaica.git",
+    "directory": "toolkit/jamaica-constants/ts"
+  },
+  "homepage": "https://jamaica.digital/packages/constants",
+  "bugs": "https://github.com/jamaica-digital/jamaica/issues",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@jamaica-digital/tsconfig": "workspace:*",
     "tsup": "^8.0.0",

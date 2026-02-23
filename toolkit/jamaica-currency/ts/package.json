@@ -16,6 +16,16 @@
   },
   "keywords": ["jamaica", "jmd", "currency", "formatting"],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamaica-digital/jamaica.git",
+    "directory": "toolkit/jamaica-currency/ts"
+  },
+  "homepage": "https://jamaica.digital/packages/currency",
+  "bugs": "https://github.com/jamaica-digital/jamaica/issues",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@jamaica-digital/tsconfig": "workspace:*",
     "tsup": "^8.0.0",

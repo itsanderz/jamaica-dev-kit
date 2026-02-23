@@ -16,6 +16,16 @@
   },
   "keywords": ["jamaica", "schools", "education", "university", "primary", "secondary"],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamaica-digital/jamaica.git",
+    "directory": "toolkit/jamaica-schools/ts"
+  },
+  "homepage": "https://jamaica.digital/packages/schools",
+  "bugs": "https://github.com/jamaica-digital/jamaica/issues",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@jamaica-digital/tsconfig": "workspace:*",
     "tsup": "^8.0.0",

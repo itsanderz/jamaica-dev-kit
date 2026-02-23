@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const copied = ref(false)
 
@@ -10,6 +10,27 @@ async function copyInstall() {
     setTimeout(() => { copied.value = false }, 2000)
   } catch {}
 }
+
+onMounted(() => {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (prefersReduced) return
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed')
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+  )
+
+  document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+    observer.observe(el)
+  })
+})
 
 const categories = [
   {
@@ -88,26 +109,27 @@ const allPackages = [
     <section class="hero">
       <div class="hero-bg">
         <div class="hero-grid"></div>
+        <div class="hero-aurora"></div>
         <div class="hero-glow hero-glow--green"></div>
         <div class="hero-glow hero-glow--gold"></div>
       </div>
 
       <div class="hero-content">
-        <span class="hero-badge">
+        <span class="hero-badge hero-anim" style="--anim-delay: 0s">
           <span class="hero-badge-dot"></span>
           Open Source · TypeScript & Python
         </span>
 
-        <h1 class="hero-title">
+        <h1 class="hero-title hero-anim" style="--anim-delay: 0.1s">
           The developer toolkit<br />for Jamaica
         </h1>
 
-        <p class="hero-subtitle">
+        <p class="hero-subtitle hero-anim" style="--anim-delay: 0.2s">
           21 production-ready packages for identity validation, financial calculations,
           geographic data, public services, developer experience, and live data. 1,000+ tests.
         </p>
 
-        <div class="hero-actions">
+        <div class="hero-actions hero-anim" style="--anim-delay: 0.3s">
           <a href="/guide/getting-started" class="btn btn--primary">
             Get Started
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -118,7 +140,7 @@ const allPackages = [
           </a>
         </div>
 
-        <div class="hero-install">
+        <div class="hero-install hero-anim" style="--anim-delay: 0.4s">
           <span class="hero-install-prompt">$</span>
           <code class="hero-install-cmd">npm install jamaica</code>
           <button class="hero-install-copy" @click="copyInstall" :title="copied ? 'Copied!' : 'Copy'">
@@ -130,7 +152,7 @@ const allPackages = [
     </section>
 
     <!-- ============ CODE PREVIEW ============ -->
-    <section class="preview">
+    <section class="preview reveal-on-scroll">
       <div class="preview-inner">
         <div class="terminal">
           <div class="terminal-header">
@@ -165,7 +187,7 @@ parish.capital               <span class="t-cm">// "Kingston"</span></code></pre
     </section>
 
     <!-- ============ STATS ============ -->
-    <section class="stats">
+    <section class="stats reveal-on-scroll">
       <div class="stats-inner">
         <div class="stats-item">
           <span class="stats-value">21</span>
@@ -190,7 +212,7 @@ parish.capital               <span class="t-cm">// "Kingston"</span></code></pre
     </section>
 
     <!-- ============ FEATURES ============ -->
-    <section class="features">
+    <section class="features reveal-on-scroll">
       <div class="features-inner">
         <div class="section-header">
           <h2 class="section-title">Everything you need</h2>
@@ -202,9 +224,10 @@ parish.capital               <span class="t-cm">// "Kingston"</span></code></pre
 
         <div class="features-grid">
           <div
-            v-for="cat in categories"
+            v-for="(cat, i) in categories"
             :key="cat.label"
-            class="feature-card"
+            class="feature-card stagger-card"
+            :style="{ '--reveal-delay': i * 80 + 'ms' }"
           >
             <div class="feature-label" :style="{ color: cat.color }">
               <span class="feature-label-dot" :style="{ background: cat.color }"></span>
@@ -221,7 +244,7 @@ parish.capital               <span class="t-cm">// "Kingston"</span></code></pre
     </section>
 
     <!-- ============ ALL PACKAGES ============ -->
-    <section class="packages">
+    <section class="packages reveal-on-scroll">
       <div class="packages-inner">
         <div class="section-header">
           <h2 class="section-title">21 packages</h2>
@@ -233,10 +256,11 @@ parish.capital               <span class="t-cm">// "Kingston"</span></code></pre
 
         <div class="packages-grid">
           <a
-            v-for="pkg in allPackages"
+            v-for="(pkg, i) in allPackages"
             :key="pkg.name"
             :href="pkg.link"
-            class="pkg-card"
+            class="pkg-card stagger-card"
+            :style="{ '--reveal-delay': i * 40 + 'ms' }"
           >
             <span class="pkg-name">{{ pkg.name }}</span>
             <span class="pkg-desc">{{ pkg.desc }}</span>
@@ -247,7 +271,7 @@ parish.capital               <span class="t-cm">// "Kingston"</span></code></pre
     </section>
 
     <!-- ============ PLAYGROUND ============ -->
-    <section class="playground-section">
+    <section class="playground-section reveal-on-scroll">
       <div class="playground-inner">
         <div class="section-header">
           <h2 class="section-title">Try it live</h2>
@@ -310,7 +334,7 @@ parish.capital               <span class="t-cm">// "Kingston"</span></code></pre
     </section>
 
     <!-- ============ SECTORS ============ -->
-    <section class="sectors">
+    <section class="sectors reveal-on-scroll">
       <div class="sectors-inner">
         <div class="section-header">
           <h2 class="section-title">Built for every industry</h2>
@@ -389,7 +413,7 @@ parish.capital               <span class="t-cm">// "Kingston"</span></code></pre
     </section>
 
     <!-- ============ CTA ============ -->
-    <section class="cta">
+    <section class="cta reveal-on-scroll">
       <div class="cta-inner">
         <div class="cta-glow"></div>
         <h2 class="cta-title">Start building today</h2>
@@ -1231,6 +1255,100 @@ parish.capital               <span class="t-cm">// "Kingston"</span></code></pre
 
   .packages-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ===== AURORA BACKGROUND ===== */
+.hero-aurora {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 50% at 30% 20%, rgba(0, 155, 58, 0.12), transparent),
+    radial-gradient(ellipse 60% 40% at 70% 80%, rgba(254, 209, 0, 0.08), transparent),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(0, 155, 58, 0.05), transparent);
+  filter: blur(60px);
+  animation: aurora-shift 12s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-shift {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.1) translate(20px, -10px); }
+}
+
+/* ===== HERO ENTRANCE ===== */
+.hero-anim {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: hero-fade-up 0.7s ease-out forwards;
+  animation-delay: var(--anim-delay, 0s);
+}
+
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== SCROLL REVEALS ===== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== STAGGERED CARD REVEALS ===== */
+.reveal-on-scroll.revealed .stagger-card {
+  animation: card-pop 0.5s ease-out both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+.stagger-card {
+  opacity: 0;
+}
+
+.reveal-on-scroll.revealed .stagger-card {
+  opacity: 1;
+}
+
+@keyframes card-pop {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .hero-anim {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .hero-aurora {
+    animation: none;
+  }
+
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .stagger-card {
+    opacity: 1;
+    animation: none;
+  }
+
+  .reveal-on-scroll.revealed .stagger-card {
+    animation: none;
+  }
+
+  .hero-badge-dot {
+    animation: none;
   }
 }
 </style>

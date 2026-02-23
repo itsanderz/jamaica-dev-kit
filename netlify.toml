@@ -1,0 +1,11 @@
+[build]
+  command = "pnpm install && pnpm build && cd apps/docs && pnpm build"
+  publish = "apps/docs/.vitepress/dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

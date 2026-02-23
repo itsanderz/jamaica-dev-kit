@@ -16,6 +16,16 @@
   },
   "keywords": ["jamaica", "zod", "validation", "schema", "trn", "phone", "parish"],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamaica-digital/jamaica.git",
+    "directory": "toolkit/jamaica-zod/ts"
+  },
+  "homepage": "https://jamaica.digital/packages/zod",
+  "bugs": "https://github.com/jamaica-digital/jamaica/issues",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "zod": "^3.20.0"
   },

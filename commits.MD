@@ -99,61 +99,90 @@
 
 ---
 
+### Commit 4: commits.MD (09f0e6b)
+- Added this commit log and roadmap file
+
+---
+
+### Commit 5: Complete All TODO Items (750a6ec)
+**13 files changed, 628 insertions**
+
+#### README Rewrite
+- Full rewrite with shields.io badges (License, Node 22+, Python 3.11+, TypeScript, PRs Welcome)
+- Package tables grouped by category (Core, Finance, Geography, Social, DX, Live Data)
+- Quick start with install command and import examples
+- Example apps section with descriptions
+- Development setup instructions
+- Links to docs, contributing guide, and license
+
+#### Community & Contributing
+- `CODE_OF_CONDUCT.md` — Contributor Covenant v2.1
+- `.github/ISSUE_TEMPLATE/bug_report.yml` — structured form with package dropdown, language selector, version, environment
+- `.github/ISSUE_TEMPLATE/feature_request.yml` — summary, use case, proposed solution, package dropdown
+- `.github/ISSUE_TEMPLATE/config.yml` — template chooser (blank issues disabled)
+- `.github/PULL_REQUEST_TEMPLATE.md` — description, type of change checkboxes, checklist (tests, lint, docs, changeset)
+
+#### Favicon
+- Created `apps/docs/public/favicon.svg` — 32x32 green rounded rectangle with gold "JA" text
+- Added `<link rel="icon">` to VitePress config head array with `/jamaica-dev-kit/` base path
+
+#### PyPI Publish Workflow
+- `.github/workflows/publish-python.yml`
+- Triggers on GitHub release or manual dispatch (with optional package filter)
+- Discovers packages from root `pyproject.toml` workspace members
+- Matrix strategy builds each package in parallel
+- Tries OIDC trusted publishing first, falls back to `PYPI_TOKEN` secret
+- Skips already-published versions
+
+#### E2E Test Infrastructure
+- `tests/e2e/package.json` — standalone Playwright test package (not in workspace)
+- `tests/e2e/playwright.config.ts` — Chromium, trace on retry, screenshot on failure
+- `tests/e2e/docs.test.ts` — 5 smoke tests: page title, hero heading, navigation links, search button, no console errors
+
+#### Turbo Config
+- Added `typecheck` script to root `package.json`
+- `turbo.json` already had proper `typecheck` task with `dependsOn: ["^build"]`
+
+---
+
 ## Verified Working
 
 - All 4 example apps render correctly in light and dark mode (Playwright verified)
 - VitePress docs build successfully with sitemap generation
 - Landing page animations play (aurora gradient, hero entrance, scroll reveals, card stagger)
 - GitHub Pages deployment succeeds via Actions workflow
-- Only cosmetic issue: missing `favicon.ico` (404, does not affect functionality)
+- Favicon renders in browser tab
+- All CI workflows pass (CI, Deploy Docs, Release)
 
 ---
 
-## Future / TODO
-
-### Contributing Guide & Templates
-- `CODE_OF_CONDUCT.md` — Contributor Covenant v2.1
-- `.github/ISSUE_TEMPLATE/bug_report.yml` — structured bug report form
-- `.github/ISSUE_TEMPLATE/feature_request.yml` — structured feature request form
-- `.github/ISSUE_TEMPLATE/config.yml` — template chooser config
-- `.github/PULL_REQUEST_TEMPLATE.md` — PR checklist
-- (CONTRIBUTING.md already exists from initial commit)
-- *Note: Previously blocked by API content filter — retry needed*
+## Future / Requires External Setup
 
 ### Publish Packages to npm
+- Add `NPM_TOKEN` secret to GitHub repo settings
 - Run `pnpm changeset` to create initial changesets for all 21 packages
 - Run `pnpm version` to bump versions
-- Run `pnpm release` to publish to npm (requires `NPM_TOKEN` secret in GitHub)
-- Or let the Changesets GitHub Action handle it via release PR
+- Push to master — Changesets Action will create a release PR or publish directly
 
 ### Publish Python Packages to PyPI
-- Configure PyPI credentials
-- Publish all 17 Python packages via `uv publish` or a GitHub Actions workflow
 - Register package names on PyPI
+- Configure trusted publishing (OIDC) on PyPI for the GitHub repo, OR add `PYPI_TOKEN` secret
+- Create a GitHub release to trigger the `publish-python.yml` workflow
 
 ### Custom Domain
 - Currently at `itsanderz.github.io/jamaica-dev-kit/`
-- Can add custom domain (e.g., `jamaica.digital`) via GitHub Pages settings
-- Would need to update `base` in config.mts back to `/` and update sitemap hostname
-
-### Add Favicon
-- Create `apps/docs/public/favicon.ico` and/or `favicon.svg`
-- Add `<link rel="icon">` to VitePress config head array
+- To use a custom domain (e.g., `jamaica.digital`):
+  - Configure DNS (CNAME or A records)
+  - Add domain in GitHub Pages settings
+  - Update `base` in `config.mts` back to `/`
+  - Update sitemap hostname
 
 ### Example App Deployment
 - Deploy the 4 example apps to Vercel/Netlify for live demos
 - Add live demo links to docs and README
+- `vercel.json` and `netlify.toml` are already configured
 
-### README Enhancements
-- Add badges (npm version, CI status, license, downloads)
-- Add animated GIF or screenshot of the landing page
-- Add quick comparison table (packages vs alternatives)
-
-### Testing Improvements
-- Add end-to-end tests for example apps
-- Add visual regression tests for docs site
+### Additional Testing
+- Add E2E tests for the 4 example apps (similar pattern to docs tests)
+- Add visual regression tests
 - Add bundle size tracking
-
-### Turbo Build Configuration
-- Configure `turbo.json` with proper build tasks for toolkit packages
-- Currently toolkit packages have no build step (pure source), but could add type checking or validation

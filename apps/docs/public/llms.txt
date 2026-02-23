@@ -1,0 +1,53 @@
+# Jamaica Developer Kit
+
+> Open-source toolkit for building Jamaica-focused applications. Provides 16 dual-language (TypeScript/JavaScript + Python) packages covering identity validation, financial calculations, geographic data, education, health, transport, emergency services, and more. Install everything with `npm install jamaica` or `pip install jamaica`. Zero runtime dependencies. 850+ tests.
+
+The Jamaica Developer Kit is the definitive developer ecosystem for Jamaica. It covers every sector — government, finance, education, health, transport, security — and every complexity level from basic form validation to enterprise payroll systems. All packages work offline with embedded data (no API calls required).
+
+## Guide
+
+- [Getting Started](https://jamaica-dev.org/guide/getting-started): Installation and first steps — three ways to install (meta-package, individual packages, CLI)
+- [Installation](https://jamaica-dev.org/guide/installation): Requirements (Node 18+, Python 3.11+) and setup instructions
+- [Quick Start](https://jamaica-dev.org/guide/quick-start): Build your first Jamaica-aware application in minutes
+
+## Core Packages
+
+- [jamaica-trn](https://jamaica-dev.org/packages/trn): Validate and format Jamaica Taxpayer Registration Numbers (TRN) — 9-digit format with mod-11 check digit. Functions: isValidTRN, formatTRN, unformatTRN, generateTestTRN, getTRNCheckDigit
+- [jamaica-phone](https://jamaica-dev.org/packages/phone): Validate and format Jamaican phone numbers (+1-876 and +1-658 area codes). Detect carriers (Flow, Digicel), format as local/national/E.164/international. Functions: isValidJamaicanNumber, parsePhone, formatLocal, formatNational, formatE164, getCarrier, isMobile
+- [jamaica-addresses](https://jamaica-dev.org/packages/addresses): Parse informal Jamaican addresses (no national postal code system), extract parish names, handle Kingston sectors 1-20. Functions: parseAddress, formatAddress, normalizeAddress, extractParish, isKingstonAddress, getKingstonSector
+- [jamaica-constants](https://jamaica-dev.org/packages/constants): Country reference data — ISO codes (JM, JAM, 388), calling code (+1), area codes (876, 658), currency (JMD, J$), timezone (America/Jamaica, UTC-5), TLD (.jm), capital (Kingston), emergency numbers (119 police, 110 ambulance/fire), national symbols, flag colors, government type
+
+## Finance Packages
+
+- [jamaica-currency](https://jamaica-dev.org/packages/currency): Format JMD amounts (J$5,000.00), parse currency strings, convert JMD/USD, calculate GCT (15% standard, 25% telecom). Functions: formatJMD, parseJMD, jmdToUSD, usdToJMD, addGCT, removeGCT, formatWithGCT
+- [jamaica-tax](https://jamaica-dev.org/packages/tax): Income tax (PAYE) with J$1,500,096 annual threshold, 25%/30% brackets. Statutory deductions: NIS (3%), NHT (2%), Education Tax (2.25%), HEART/NTA (3% employer). Full payroll calculation. Functions: calculatePayroll, calculateIncomeTax, calculateNIS, calculateNHT, calculateEducationTax, calculateHEART, getIncomeTaxBrackets
+- [jamaica-banks](https://jamaica-dev.org/packages/banks): 14 banking institutions (NCB, Scotiabank, JMMB, Sagicor, JN, etc.), 22 branches with parish locations, SWIFT/BIC codes. Functions: getBanks, getBank, getBankBranches, getBranchesByParish, getSwiftCode, searchBanks
+- [jamaica-gov-fees](https://jamaica-dev.org/packages/gov-fees): 60+ government service fees across 10 agencies — passports, driver's licences, vehicle registration, business registration, vital records, police records. Functions: getPassportFee, getVehicleRegistrationFee, getDriversLicenceFee, getAllFees, searchFees
+
+## Geography Packages
+
+- [jamaica-parishes](https://jamaica-dev.org/packages/parishes): All 14 parishes with population (2011 census), coordinates, area, capital town, NLA/tax/customs offices. Distance calculations using Haversine. Functions: getAllParishes, getParish, getParishByName, getDistanceKm, getNearestParishWithNLA
+- [jamaica-places](https://jamaica-dev.org/packages/places): 200+ cities, towns, communities, districts, and villages across all 14 parishes with population data. Functions: getPlaces, getPlacesByParish, getTowns, getCommunities, searchPlaces, getPlace
+- [jamaica-constituencies](https://jamaica-dev.org/packages/constituencies): All 63 electoral constituencies mapped to their parishes. Functions: getConstituencies, getConstituencyByParish, getConstituency, searchConstituencies, getConstituencyCount
+- [jamaica-transport](https://jamaica-dev.org/packages/transport): 6 airports (IATA/ICAO codes), 6 seaports, 10 vehicle classifications, road network (22,121 km), 3 highways, licence plate prefixes. Functions: getAirports, getAirport, getSeaports, getVehicleClasses, getRoadNetwork, getHighways, getLicencePlatePrefixes
+
+## Social Packages
+
+- [jamaica-schools](https://jamaica-dev.org/packages/schools): 70+ schools and 8 universities across all 14 parishes. Filter by type (primary, secondary, tertiary), level, ownership (government, government-aided, church, independent). Functions: getSchools, getSchoolsByParish, getSchoolsByType, getUniversities, searchSchools
+- [jamaica-health](https://jamaica-dev.org/packages/health): 22 hospitals, 33 health centres across 4 Regional Health Authorities (NERHA, WRHA, SRHA, SERHA). Nearest facility lookup with GPS coordinates. Functions: getHospitals, getHealthCentres, getHealthFacilitiesByParish, getRegionalAuthority, getNearestFacility, searchHealthFacilities
+- [jamaica-emergency](https://jamaica-dev.org/packages/emergency): 23 police stations, 17 fire stations, 17 disaster shelters. Emergency numbers: police 119, ambulance 110, fire 110, ODPEM 116. Functions: getEmergencyNumbers, getPoliceStations, getFireStations, getDisasterShelters, searchStations
+- [jamaica-holidays](https://jamaica-dev.org/packages/holidays): 10 public holidays per year with Sunday substitution rule (holidays on Sunday shift to Monday). Easter calculation. Business day and working day utilities. Functions: getHolidays, isPublicHoliday, getNextHoliday, isBusinessDay, getWorkingDays
+
+## CLI
+
+- [CLI Overview](https://jamaica-dev.org/cli/): Command-line interface with 40+ commands. Install globally with `npm install -g jamaica-cli`. Supports `--json` flag for machine-readable output. Commands: jamaica trn, jamaica phone, jamaica parish, jamaica currency, jamaica fees, jamaica address, jamaica holidays, jamaica constants, jamaica tax, jamaica schools, jamaica health, jamaica banks, jamaica constituencies, jamaica transport, jamaica emergency, jamaica places
+
+## Examples
+
+- [Common Patterns](https://jamaica-dev.org/examples/common-patterns): User input validation, invoice calculations with GCT, finding service centers, office status checks
+- [React Forms](https://jamaica-dev.org/examples/react-forms): TRN input component with live validation, fee calculator component
+- [Express Middleware](https://jamaica-dev.org/examples/express-middleware): TRN validation middleware, fee lookup API endpoints
+
+## Optional
+
+- [Package Overview](https://jamaica-dev.org/packages/overview): Summary table of all packages with export counts

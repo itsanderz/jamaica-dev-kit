@@ -1,0 +1,25 @@
+{
+  "name": "jamaica-banks",
+  "version": "0.1.0",
+  "description": "Jamaica banking institutions directory — commercial banks, building societies, credit unions, and branches",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "import": "./dist/index.mjs", "require": "./dist/index.js", "types": "./dist/index.d.ts" }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/"
+  },
+  "keywords": ["jamaica", "banks", "banking", "fintech", "ncb", "scotia", "jn"],
+  "license": "MIT",
+  "devDependencies": {
+    "@jamaica-digital/tsconfig": "workspace:*",
+    "tsup": "^8.0.0",
+    "vitest": "^3.0.0",
+    "typescript": "^5.7.0"
+  }
+}

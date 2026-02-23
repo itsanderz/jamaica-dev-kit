@@ -1,0 +1,9 @@
+[project]
+name = "jamaica-addresses"
+version = "0.1.0"
+description = "Jamaica address parser and normalizer for informal addressing systems"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

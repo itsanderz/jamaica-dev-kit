@@ -1,0 +1,9 @@
+[project]
+name = "jamaica-emergency"
+version = "0.1.0"
+description = "Jamaica emergency services — police, fire stations, and disaster shelters"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

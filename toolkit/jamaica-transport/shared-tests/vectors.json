@@ -1,0 +1,216 @@
+{
+  "airports": {
+    "total": 6,
+    "international": 3,
+    "domestic": 3,
+    "lookups": [
+      {
+        "input": "KIN",
+        "field": "iata",
+        "expected": {
+          "name": "Norman Manley International Airport",
+          "iata": "KIN",
+          "icao": "MKJP",
+          "parish": "Kingston",
+          "type": "international",
+          "coordinates": { "lat": 17.9357, "lng": -76.7875 }
+        }
+      },
+      {
+        "input": "MKJS",
+        "field": "icao",
+        "expected": {
+          "name": "Sangster International Airport",
+          "iata": "MBJ",
+          "icao": "MKJS",
+          "parish": "St. James",
+          "type": "international",
+          "coordinates": { "lat": 18.5037, "lng": -77.9133 }
+        }
+      },
+      {
+        "input": "OCJ",
+        "field": "iata",
+        "expected": {
+          "name": "Ian Fleming International Airport",
+          "iata": "OCJ",
+          "icao": "MKBS",
+          "parish": "St. Mary",
+          "type": "international",
+          "coordinates": { "lat": 18.4042, "lng": -76.969 }
+        }
+      },
+      {
+        "input": "KTP",
+        "field": "iata",
+        "expected": {
+          "name": "Tinson Pen Aerodrome",
+          "iata": "KTP",
+          "icao": "MKTP",
+          "parish": "Kingston",
+          "type": "domestic",
+          "coordinates": { "lat": 17.9886, "lng": -76.8238 }
+        }
+      },
+      {
+        "input": "MKKJ",
+        "field": "icao",
+        "expected": {
+          "name": "Ken Jones Aerodrome",
+          "iata": "POT",
+          "icao": "MKKJ",
+          "parish": "Portland",
+          "type": "domestic",
+          "coordinates": { "lat": 18.1988, "lng": -76.5345 }
+        }
+      },
+      {
+        "input": "NEG",
+        "field": "iata",
+        "expected": {
+          "name": "Negril Aerodrome",
+          "iata": "NEG",
+          "icao": "MKNG",
+          "parish": "Westmoreland",
+          "type": "domestic",
+          "coordinates": { "lat": 18.3428, "lng": -78.3321 }
+        }
+      }
+    ],
+    "search": [
+      { "query": "Kingston", "expectedCount": 2 },
+      { "query": "Norman", "expectedCount": 1 },
+      { "query": "MBJ", "expectedCount": 1 },
+      { "query": "MKBS", "expectedCount": 1 },
+      { "query": "negril", "expectedCount": 1 },
+      { "query": "nonexistent", "expectedCount": 0 }
+    ],
+    "notFound": ["XXX", ""]
+  },
+  "seaports": {
+    "total": 6,
+    "lookups": [
+      {
+        "input": "Kingston",
+        "expected": {
+          "name": "Kingston Container Terminal",
+          "parish": "Kingston",
+          "type": "cargo",
+          "operator": "Kingston Freeport Terminal Limited"
+        }
+      },
+      {
+        "input": "Montego Bay",
+        "expected": {
+          "name": "Port of Montego Bay",
+          "parish": "St. James",
+          "type": "cruise/cargo",
+          "operator": null
+        }
+      },
+      {
+        "input": "Ocho Rios",
+        "expected": {
+          "name": "Port of Ocho Rios",
+          "parish": "St. Ann",
+          "type": "cruise",
+          "operator": null
+        }
+      },
+      {
+        "input": "Falmouth",
+        "expected": {
+          "name": "Port of Falmouth",
+          "parish": "Trelawny",
+          "type": "cruise",
+          "operator": null
+        }
+      },
+      {
+        "input": "Port Antonio",
+        "expected": {
+          "name": "Port of Port Antonio",
+          "parish": "Portland",
+          "type": "cargo",
+          "operator": null
+        }
+      },
+      {
+        "input": "Rocky",
+        "expected": {
+          "name": "Rocky Point",
+          "parish": "Clarendon",
+          "type": "fishing/cargo",
+          "operator": null
+        }
+      }
+    ],
+    "notFound": ["nonexistent"]
+  },
+  "vehicleClasses": {
+    "total": 10,
+    "lookups": [
+      { "code": "PMC", "name": "Private Motor Car", "platePrefix": null },
+      { "code": "CMC", "name": "Commercial Motor Car", "platePrefix": "PP" },
+      { "code": "MC", "name": "Motorcycle", "platePrefix": "MC" },
+      { "code": "MT", "name": "Motor Truck", "platePrefix": "C" },
+      { "code": "MB", "name": "Motor Bus", "platePrefix": "PP" },
+      { "code": "TR", "name": "Trailer", "platePrefix": "C" },
+      { "code": "AV", "name": "Agricultural Vehicle", "platePrefix": null },
+      { "code": "SPV", "name": "Special Purpose Vehicle", "platePrefix": null },
+      { "code": "GV", "name": "Government Vehicle", "platePrefix": "G" },
+      { "code": "DV", "name": "Diplomatic Vehicle", "platePrefix": "D" }
+    ],
+    "notFound": ["ZZZ"]
+  },
+  "roadNetwork": {
+    "totalKm": 22121,
+    "pavedKm": 15462,
+    "unpavedKm": 6659,
+    "mainRoadsKm": 4895,
+    "parochialRoadsKm": 10567,
+    "invariants": {
+      "pavedPlusUnpavedEqualsTotal": true,
+      "mainPlusParochialEqualsPaved": true
+    }
+  },
+  "highways": {
+    "total": 3,
+    "items": [
+      {
+        "name": "Highway 2000",
+        "segments": [
+          "Kingston to May Pen (Leg 1)",
+          "May Pen to Williamsfield (Leg 2)"
+        ],
+        "totalKm": 67,
+        "status": "toll"
+      },
+      {
+        "name": "North-South Highway",
+        "segments": ["Caymanas to Ocho Rios"],
+        "totalKm": 66,
+        "status": "toll"
+      },
+      {
+        "name": "East-West Highway",
+        "segments": ["Harbour View to Port Antonio (proposed)"],
+        "totalKm": 85,
+        "status": "proposed"
+      }
+    ]
+  },
+  "licencePlatePrefixes": {
+    "total": 8,
+    "items": [
+      { "prefix": "", "vehicleType": "Private" },
+      { "prefix": "PP", "vehicleType": "Public Passenger Vehicle" },
+      { "prefix": "C", "vehicleType": "Commercial" },
+      { "prefix": "G", "vehicleType": "Government" },
+      { "prefix": "D", "vehicleType": "Diplomatic" },
+      { "prefix": "MC", "vehicleType": "Motorcycle" },
+      { "prefix": "CY", "vehicleType": "Motorcycle" },
+      { "prefix": "R", "vehicleType": "Rental" }
+    ]
+  }
+}

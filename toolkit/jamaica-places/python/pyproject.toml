@@ -1,0 +1,9 @@
+[project]
+name = "jamaica-places"
+version = "0.1.0"
+description = "Jamaica places directory — cities, towns, communities, and districts"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

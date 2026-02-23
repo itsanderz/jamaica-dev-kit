@@ -1,0 +1,158 @@
+{
+  "description": "Shared test vectors for jamaica-schools package. Both TS and Python implementations must pass these.",
+  "totalSchoolCount": 74,
+  "totalParishes": 14,
+  "totalUniversities": 8,
+  "parishes": [
+    "Kingston",
+    "St. Andrew",
+    "St. Catherine",
+    "Clarendon",
+    "Manchester",
+    "St. Elizabeth",
+    "Westmoreland",
+    "Hanover",
+    "St. James",
+    "Trelawny",
+    "St. Ann",
+    "St. Mary",
+    "Portland",
+    "St. Thomas"
+  ],
+  "schoolCountByParish": {
+    "Kingston": 14,
+    "St. Andrew": 8,
+    "St. Catherine": 6,
+    "Clarendon": 4,
+    "Manchester": 5,
+    "St. Elizabeth": 4,
+    "Westmoreland": 3,
+    "Hanover": 3,
+    "St. James": 5,
+    "Trelawny": 4,
+    "St. Ann": 5,
+    "St. Mary": 4,
+    "Portland": 5,
+    "St. Thomas": 4
+  },
+  "universities": [
+    { "name": "University of the West Indies, Mona", "parish": "Kingston", "ownership": "government" },
+    { "name": "University of Technology, Jamaica", "parish": "Kingston", "ownership": "government" },
+    { "name": "Caribbean Maritime University", "parish": "Kingston", "ownership": "government" },
+    { "name": "The Mico University College", "parish": "Kingston", "ownership": "government-aided" },
+    { "name": "Edna Manley College of the Visual and Performing Arts", "parish": "Kingston", "ownership": "government" },
+    { "name": "University of the Commonwealth Caribbean", "parish": "Kingston", "ownership": "independent" },
+    { "name": "Northern Caribbean University", "parish": "Manchester", "ownership": "church" },
+    { "name": "College of Agriculture, Science and Education", "parish": "Portland", "ownership": "government" }
+  ],
+  "searchTests": [
+    {
+      "query": "Kingston",
+      "description": "Search for 'Kingston' should match schools with Kingston in the name",
+      "expectedMinResults": 3,
+      "expectedNames": [
+        "Kingston Technical High School",
+        "Kingston College"
+      ]
+    },
+    {
+      "query": "College",
+      "description": "Search for 'College' should match both secondary and tertiary",
+      "expectedMinResults": 6
+    },
+    {
+      "query": "Primary",
+      "description": "Search for 'Primary' should return all primary schools",
+      "expectedMinResults": 14
+    },
+    {
+      "query": "xyznonexistent",
+      "description": "Non-matching query returns empty",
+      "expectedMinResults": 0,
+      "expectedExactCount": 0
+    }
+  ],
+  "getSchoolTests": [
+    {
+      "input": "Kingston College",
+      "expectedName": "Kingston College",
+      "expectedParish": "Kingston"
+    },
+    {
+      "input": "kingston college",
+      "expectedName": "Kingston College",
+      "description": "Case-insensitive exact match"
+    },
+    {
+      "input": "Wolmer",
+      "expectedNameContains": "Wolmer",
+      "description": "Partial match"
+    },
+    {
+      "input": "Nonexistent School ABC123",
+      "expectedNull": true,
+      "description": "Returns null/None for unknown school"
+    }
+  ],
+  "parishFilterTests": [
+    {
+      "parish": "Kingston",
+      "expectedMinCount": 10,
+      "description": "Kingston has many schools including universities"
+    },
+    {
+      "parish": "kingston",
+      "expectedMinCount": 10,
+      "description": "Case-insensitive parish matching"
+    },
+    {
+      "parish": "Portland",
+      "expectedMinCount": 4,
+      "description": "Portland includes CASE university"
+    }
+  ],
+  "typeFilterTests": [
+    {
+      "type": "secondary",
+      "expectedMinCount": 40,
+      "description": "Most schools in directory are secondary"
+    },
+    {
+      "type": "primary",
+      "expectedMinCount": 14,
+      "description": "Primary schools across all parishes"
+    },
+    {
+      "type": "tertiary",
+      "expectedMinCount": 8,
+      "description": "All universities"
+    },
+    {
+      "type": "all-age",
+      "expectedMinCount": 1,
+      "description": "At least Falmouth All-Age School"
+    }
+  ],
+  "ownershipFilterTests": [
+    {
+      "ownership": "government",
+      "expectedMinCount": 20,
+      "description": "Government-owned schools"
+    },
+    {
+      "ownership": "government-aided",
+      "expectedMinCount": 20,
+      "description": "Government-aided schools"
+    },
+    {
+      "ownership": "church",
+      "expectedMinCount": 5,
+      "description": "Church-owned schools"
+    },
+    {
+      "ownership": "independent",
+      "expectedMinCount": 1,
+      "description": "At least UCC"
+    }
+  ]
+}

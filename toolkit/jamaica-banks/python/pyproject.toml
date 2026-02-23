@@ -1,0 +1,9 @@
+[project]
+name = "jamaica-banks"
+version = "0.1.0"
+description = "Jamaica banking institutions directory"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

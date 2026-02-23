@@ -1,0 +1,50 @@
+{
+  "expected_exports": [
+    "COUNTRY_CODE", "ISO_ALPHA3", "ISO_NUMERIC",
+    "CALLING_CODE", "AREA_CODES",
+    "CURRENCY_CODE", "CURRENCY_SYMBOL",
+    "TIMEZONE", "UTC_OFFSET", "OBSERVES_DST",
+    "LOCALE", "LANGUAGES", "TLD",
+    "CAPITAL", "TOTAL_PARISHES", "AREA_KM2", "COORDINATES", "BOUNDING_BOX",
+    "DRIVING_SIDE",
+    "EMERGENCY_NUMBER", "AMBULANCE_NUMBER", "FIRE_NUMBER",
+    "MOTTO", "NATIONAL_FLOWER", "NATIONAL_BIRD", "NATIONAL_FRUIT", "NATIONAL_TREE", "NATIONAL_DISH",
+    "INDEPENDENCE_DATE", "EMANCIPATION_DATE",
+    "FLAG_COLORS",
+    "HEAD_OF_STATE", "GOVERNMENT_TYPE", "UN_MEMBER_SINCE", "CARICOM_MEMBER"
+  ],
+  "iso": {
+    "alpha2": "JM",
+    "alpha3": "JAM",
+    "numeric": "388"
+  },
+  "timezone": {
+    "name": "America/Jamaica",
+    "utc_offset": -5,
+    "observes_dst": false
+  },
+  "currency": {
+    "code": "JMD",
+    "symbol": "J$"
+  },
+  "telecom": {
+    "calling_code": "+1",
+    "area_codes": ["876", "658"]
+  },
+  "geography": {
+    "capital": "Kingston",
+    "total_parishes": 14,
+    "area_km2": 10991,
+    "driving_side": "left"
+  },
+  "emergency": {
+    "police": "119",
+    "ambulance": "110",
+    "fire": "110"
+  },
+  "flag_colors": {
+    "green": "#009B3A",
+    "gold": "#FED100",
+    "black": "#000000"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "valid": [
+    {
+      "raw": "123456784",
+      "formatted": "123-456-784",
+      "description": "Basic valid TRN"
+    },
+    {
+      "raw": "100123457",
+      "formatted": "100-123-457",
+      "description": "TRN starting with 100"
+    },
+    {
+      "raw": "198765431",
+      "formatted": "198-765-431",
+      "description": "TRN with check digit 1"
+    },
+    {
+      "raw": "000000000",
+      "formatted": "000-000-000",
+      "description": "All zeros, check digit 0"
+    },
+    {
+      "raw": "111111111",
+      "formatted": "111-111-111",
+      "description": "Repeating ones, check digit 1"
+    },
+    {
+      "raw": "999999999",
+      "formatted": "999-999-999",
+      "description": "All nines, check digit 9"
+    }
+  ],
+  "invalid": [
+    {
+      "input": "12345678",
+      "reason": "Too few digits (8)"
+    },
+    {
+      "input": "1234567840",
+      "reason": "Too many digits (10)"
+    },
+    {
+      "input": "123456780",
+      "reason": "Wrong check digit (should be 4)"
+    },
+    {
+      "input": "abcdefghi",
+      "reason": "Non-numeric characters"
+    },
+    {
+      "input": "",
+      "reason": "Empty string"
+    },
+    {
+      "input": "123-456-780",
+      "reason": "Formatted but wrong check digit"
+    },
+    {
+      "input": "400000000",
+      "reason": "Check digit would be 10 (invalid TRN)"
+    }
+  ],
+  "formatting": [
+    {
+      "input": "123456784",
+      "formatted": "123-456-784"
+    },
+    {
+      "input": "123-456-784",
+      "formatted": "123-456-784"
+    },
+    {
+      "input": "  123-456-784  ",
+      "formatted": "123-456-784"
+    }
+  ],
+  "unformatting": [
+    {
+      "input": "123-456-784",
+      "raw": "123456784"
+    },
+    {
+      "input": "123456784",
+      "raw": "123456784"
+    },
+    {
+      "input": "  123-456-784  ",
+      "raw": "123456784"
+    }
+  ],
+  "checkDigit": [
+    {
+      "digits": "12345678",
+      "expected": 4
+    },
+    {
+      "digits": "10012345",
+      "expected": 7
+    },
+    {
+      "digits": "19876543",
+      "expected": 1
+    },
+    {
+      "digits": "00000000",
+      "expected": 0
+    },
+    {
+      "digits": "11111111",
+      "expected": 1
+    },
+    {
+      "digits": "99999999",
+      "expected": 9
+    },
+    {
+      "digits": "40000000",
+      "expected": null,
+      "description": "Produces check digit 10, which is invalid"
+    },
+    {
+      "digits": "1234567",
+      "expected": null,
+      "description": "Too few digits"
+    },
+    {
+      "digits": "123456789",
+      "expected": null,
+      "description": "Too many digits (9 instead of 8)"
+    }
+  ]
+}

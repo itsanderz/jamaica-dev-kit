@@ -1,0 +1,269 @@
+{
+  "meta": {
+    "description": "Shared test vectors for jamaica-constituencies — cross-language validation",
+    "version": "0.1.0"
+  },
+  "counts": {
+    "total_constituencies": 63,
+    "total_parishes": 14
+  },
+  "parish_counts": {
+    "Kingston": 3,
+    "St. Andrew": 12,
+    "St. Catherine": 11,
+    "St. Thomas": 2,
+    "Portland": 2,
+    "St. Mary": 3,
+    "St. Ann": 4,
+    "Trelawny": 2,
+    "St. James": 5,
+    "Hanover": 2,
+    "Clarendon": 6,
+    "Manchester": 4,
+    "St. Elizabeth": 4,
+    "Westmoreland": 3
+  },
+  "parishes_sorted": [
+    "Clarendon",
+    "Hanover",
+    "Kingston",
+    "Manchester",
+    "Portland",
+    "St. Andrew",
+    "St. Ann",
+    "St. Catherine",
+    "St. Elizabeth",
+    "St. James",
+    "St. Mary",
+    "St. Thomas",
+    "Trelawny",
+    "Westmoreland"
+  ],
+  "all_constituency_names": [
+    "Kingston Central",
+    "Kingston East and Port Royal",
+    "Kingston Western",
+    "St. Andrew East Central",
+    "St. Andrew East Rural",
+    "St. Andrew Eastern",
+    "St. Andrew North Central",
+    "St. Andrew North Eastern",
+    "St. Andrew North Western",
+    "St. Andrew South Eastern",
+    "St. Andrew South Western",
+    "St. Andrew Southern",
+    "St. Andrew West Central",
+    "St. Andrew West Rural",
+    "St. Andrew Western",
+    "St. Catherine Central",
+    "St. Catherine East Central",
+    "St. Catherine Eastern",
+    "St. Catherine North Central",
+    "St. Catherine North Eastern",
+    "St. Catherine North Western",
+    "St. Catherine South Central",
+    "St. Catherine South Eastern",
+    "St. Catherine South Western",
+    "St. Catherine Southern",
+    "St. Catherine West Central",
+    "St. Thomas Eastern",
+    "St. Thomas Western",
+    "Portland Eastern",
+    "Portland Western",
+    "St. Mary Central",
+    "St. Mary South Eastern",
+    "St. Mary Western",
+    "St. Ann North Eastern",
+    "St. Ann North Western",
+    "St. Ann South Eastern",
+    "St. Ann South Western",
+    "Trelawny Northern",
+    "Trelawny Southern",
+    "St. James Central",
+    "St. James East Central",
+    "St. James North Western",
+    "St. James Southern",
+    "St. James West Central",
+    "Hanover Eastern",
+    "Hanover Western",
+    "Clarendon Central",
+    "Clarendon North Central",
+    "Clarendon North Western",
+    "Clarendon Northern",
+    "Clarendon South Eastern",
+    "Clarendon South Western",
+    "Manchester Central",
+    "Manchester North Eastern",
+    "Manchester North Western",
+    "Manchester Southern",
+    "St. Elizabeth North Eastern",
+    "St. Elizabeth North Western",
+    "St. Elizabeth South Eastern",
+    "St. Elizabeth South Western",
+    "Westmoreland Central",
+    "Westmoreland Eastern",
+    "Westmoreland Western"
+  ],
+  "exact_lookups": [
+    {
+      "input": "Kingston Central",
+      "expected_name": "Kingston Central",
+      "expected_parish": "Kingston"
+    },
+    {
+      "input": "Kingston East and Port Royal",
+      "expected_name": "Kingston East and Port Royal",
+      "expected_parish": "Kingston"
+    },
+    {
+      "input": "St. Andrew North Western",
+      "expected_name": "St. Andrew North Western",
+      "expected_parish": "St. Andrew"
+    },
+    {
+      "input": "St. Catherine South Central",
+      "expected_name": "St. Catherine South Central",
+      "expected_parish": "St. Catherine"
+    },
+    {
+      "input": "Trelawny Northern",
+      "expected_name": "Trelawny Northern",
+      "expected_parish": "Trelawny"
+    },
+    {
+      "input": "Clarendon Northern",
+      "expected_name": "Clarendon Northern",
+      "expected_parish": "Clarendon"
+    },
+    {
+      "input": "Westmoreland Western",
+      "expected_name": "Westmoreland Western",
+      "expected_parish": "Westmoreland"
+    }
+  ],
+  "case_insensitive_lookups": [
+    {
+      "input": "kingston central",
+      "expected_name": "Kingston Central"
+    },
+    {
+      "input": "KINGSTON WESTERN",
+      "expected_name": "Kingston Western"
+    },
+    {
+      "input": "st. andrew eastern",
+      "expected_name": "St. Andrew Eastern"
+    },
+    {
+      "input": "Manchester Southern",
+      "expected_name": "Manchester Southern"
+    }
+  ],
+  "null_lookups": [
+    "Nonexistent Constituency",
+    "",
+    "Kingston North",
+    "xyz"
+  ],
+  "parish_lookups": [
+    {
+      "parish": "Kingston",
+      "expected_count": 3,
+      "expected_names": [
+        "Kingston Central",
+        "Kingston East and Port Royal",
+        "Kingston Western"
+      ]
+    },
+    {
+      "parish": "St. Andrew",
+      "expected_count": 12
+    },
+    {
+      "parish": "St. Catherine",
+      "expected_count": 11
+    },
+    {
+      "parish": "Clarendon",
+      "expected_count": 6,
+      "expected_names": [
+        "Clarendon Central",
+        "Clarendon North Central",
+        "Clarendon North Western",
+        "Clarendon Northern",
+        "Clarendon South Eastern",
+        "Clarendon South Western"
+      ]
+    },
+    {
+      "parish": "Hanover",
+      "expected_count": 2,
+      "expected_names": [
+        "Hanover Eastern",
+        "Hanover Western"
+      ]
+    }
+  ],
+  "parish_case_insensitive": [
+    { "input": "kingston", "expected_count": 3 },
+    { "input": "ST. ANDREW", "expected_count": 12 },
+    { "input": "st. catherine", "expected_count": 11 }
+  ],
+  "parish_no_results": [
+    "Nonexistent",
+    "",
+    "xyz"
+  ],
+  "search_tests": [
+    {
+      "query": "Kingston",
+      "expected_min_count": 3,
+      "expected_contains": "Kingston Central"
+    },
+    {
+      "query": "North",
+      "expected_min_count": 10
+    },
+    {
+      "query": "South",
+      "expected_min_count": 10
+    },
+    {
+      "query": "Central",
+      "expected_min_count": 10
+    },
+    {
+      "query": "Port Royal",
+      "expected_count": 1,
+      "expected_contains": "Kingston East and Port Royal"
+    },
+    {
+      "query": "Eastern",
+      "expected_min_count": 5
+    },
+    {
+      "query": "Western",
+      "expected_min_count": 5
+    },
+    {
+      "query": "xyznotaconstituency",
+      "expected_count": 0
+    }
+  ],
+  "constituency_count_by_parish": {
+    "Kingston": 3,
+    "St. Andrew": 12,
+    "St. Catherine": 11,
+    "St. Thomas": 2,
+    "Portland": 2,
+    "St. Mary": 3,
+    "St. Ann": 4,
+    "Trelawny": 2,
+    "St. James": 5,
+    "Hanover": 2,
+    "Clarendon": 6,
+    "Manchester": 4,
+    "St. Elizabeth": 4,
+    "Westmoreland": 3
+  }
+}

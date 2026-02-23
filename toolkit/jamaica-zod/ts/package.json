@@ -1,0 +1,36 @@
+{
+  "name": "jamaica-zod",
+  "version": "0.1.0",
+  "description": "Zod validation schemas for Jamaica data — TRN, phone, parish, currency, and more",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "import": "./dist/index.mjs", "require": "./dist/index.js", "types": "./dist/index.d.ts" }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/"
+  },
+  "keywords": ["jamaica", "zod", "validation", "schema", "trn", "phone", "parish"],
+  "license": "MIT",
+  "peerDependencies": {
+    "zod": "^3.20.0"
+  },
+  "dependencies": {
+    "jamaica-trn": "workspace:*",
+    "jamaica-phone": "workspace:*",
+    "jamaica-parishes": "workspace:*",
+    "jamaica-constituencies": "workspace:*",
+    "jamaica-banks": "workspace:*"
+  },
+  "devDependencies": {
+    "@jamaica-digital/tsconfig": "workspace:*",
+    "zod": "^3.24.0",
+    "tsup": "^8.0.0",
+    "vitest": "^3.0.0",
+    "typescript": "^5.7.0"
+  }
+}

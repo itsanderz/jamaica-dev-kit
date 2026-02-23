@@ -1,0 +1,84 @@
+{
+  "description": "Test vectors for jamaica-parishes package - shared across TS and Python implementations",
+  "vectors": {
+    "total_parishes": 14,
+    "total_population": 2796538,
+    "parish_codes": [
+      "KIN", "SAN", "SCA", "CLA", "MAN", "SEL", "WES", "HAN",
+      "SJA", "TRE", "SAN2", "SMA", "POR", "STH"
+    ],
+    "lookup_by_code": [
+      { "code": "KIN", "expected_name": "Kingston", "expected_capital": "Kingston" },
+      { "code": "SAN", "expected_name": "St. Andrew", "expected_capital": "Half Way Tree" },
+      { "code": "SJA", "expected_name": "St. James", "expected_capital": "Montego Bay" },
+      { "code": "POR", "expected_name": "Portland", "expected_capital": "Port Antonio" },
+      { "code": "INVALID", "expected_name": null }
+    ],
+    "lookup_by_name": [
+      { "input": "Kingston", "expected_code": "KIN" },
+      { "input": "kingston", "expected_code": "KIN" },
+      { "input": "St. Andrew", "expected_code": "SAN" },
+      { "input": "Saint Andrew", "expected_code": "SAN" },
+      { "input": "st andrew", "expected_code": "SAN" },
+      { "input": "St. James", "expected_code": "SJA" },
+      { "input": "Saint James", "expected_code": "SJA" },
+      { "input": "Westmoreland", "expected_code": "WES" },
+      { "input": "Manchester", "expected_code": "MAN" },
+      { "input": "Nonexistent", "expected_code": null }
+    ],
+    "services": {
+      "nla": {
+        "parishes_with_service": ["KIN", "SAN", "MAN", "SJA"],
+        "count": 4
+      },
+      "taj": {
+        "count": 14
+      },
+      "pica": {
+        "parishes_with_service": ["KIN", "SAN", "SCA", "CLA", "MAN", "SEL", "WES", "SJA", "SAN2"],
+        "count": 9
+      },
+      "coj": {
+        "count": 14
+      }
+    },
+    "distance": {
+      "kingston_to_kingston": 0,
+      "kingston_to_montego_bay": {
+        "from": "KIN",
+        "to": "SJA",
+        "expected_km_approx": 132,
+        "tolerance_km": 15
+      },
+      "kingston_to_portland": {
+        "from": "KIN",
+        "to": "POR",
+        "expected_km_approx": 52,
+        "tolerance_km": 10
+      }
+    },
+    "nearest_nla": {
+      "from_kingston": {
+        "code": "KIN",
+        "expected_nearest_code": "KIN",
+        "expected_distance": 0
+      },
+      "from_portland": {
+        "code": "POR",
+        "expected_nearest_code": "SAN",
+        "tolerance_km": 10
+      },
+      "from_st_catherine": {
+        "code": "SCA",
+        "expected_nearest_code_one_of": ["KIN", "SAN"],
+        "max_distance_km": 25
+      }
+    },
+    "population_checks": [
+      { "code": "KIN", "population": 89186 },
+      { "code": "SAN", "population": 583718 },
+      { "code": "SCA", "population": 542763 },
+      { "code": "STH", "population": 97994 }
+    ]
+  }
+}

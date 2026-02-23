@@ -1,0 +1,202 @@
+{
+  "meta": {
+    "description": "Shared test vectors for jamaica-banks — cross-language validation",
+    "version": "0.1.0"
+  },
+  "counts": {
+    "total_banks": 14,
+    "total_branches": 22,
+    "commercial_banks": 7,
+    "merchant_banks": 1,
+    "building_societies": 2,
+    "credit_unions": 4,
+    "ncb_branches": 10,
+    "scotiabank_branches": 7,
+    "jn_branches": 5
+  },
+  "bank_lookups": [
+    {
+      "input": "ncb",
+      "expected_id": "ncb",
+      "expected_name": "National Commercial Bank",
+      "expected_abbreviation": "NCB",
+      "expected_type": "commercial",
+      "expected_swift": "JABORJMK",
+      "expected_website": "https://www.jncb.com"
+    },
+    {
+      "input": "scotiabank",
+      "expected_id": "scotiabank",
+      "expected_name": "Scotiabank Jamaica",
+      "expected_abbreviation": "Scotia",
+      "expected_type": "commercial",
+      "expected_swift": "NOSCJMKN",
+      "expected_website": "https://www.scotiabank.com/jm"
+    },
+    {
+      "input": "jmmb",
+      "expected_id": "jmmb",
+      "expected_name": "JMMB Bank (Jamaica)",
+      "expected_abbreviation": "JMMB",
+      "expected_type": "commercial",
+      "expected_swift": "JMMBKMKN",
+      "expected_website": "https://www.jmmb.com"
+    },
+    {
+      "input": "sagicor",
+      "expected_id": "sagicor",
+      "expected_name": "Sagicor Bank Jamaica",
+      "expected_abbreviation": "Sagicor",
+      "expected_type": "commercial",
+      "expected_swift": "SAJAJMKN",
+      "expected_website": "https://www.sagicorbank.com"
+    },
+    {
+      "input": "fgb",
+      "expected_id": "fgb",
+      "expected_name": "First Global Bank",
+      "expected_abbreviation": "FGB",
+      "expected_type": "commercial",
+      "expected_swift": "FGBLJMKN",
+      "expected_website": "https://www.firstglobal-bank.com"
+    },
+    {
+      "input": "citibank",
+      "expected_id": "citibank",
+      "expected_name": "Citibank N.A.",
+      "expected_abbreviation": "Citi",
+      "expected_type": "commercial",
+      "expected_swift": "CITIJMKX",
+      "expected_website": "https://www.citibank.com"
+    },
+    {
+      "input": "bns",
+      "expected_id": "bns",
+      "expected_name": "Bank of Nova Scotia Jamaica",
+      "expected_abbreviation": "BNS",
+      "expected_type": "commercial",
+      "expected_swift": "NOSCJMKN",
+      "expected_website": null
+    },
+    {
+      "input": "jn",
+      "expected_id": "jn",
+      "expected_name": "JN Bank",
+      "expected_abbreviation": "JN",
+      "expected_type": "merchant",
+      "expected_swift": "JNBSJMKN",
+      "expected_website": "https://www.jnbank.com"
+    },
+    {
+      "input": "vm",
+      "expected_id": "vm",
+      "expected_name": "VM Building Society",
+      "expected_abbreviation": "VM",
+      "expected_type": "building-society",
+      "expected_swift": null,
+      "expected_website": "https://www.vmbs.com"
+    },
+    {
+      "input": "jnbs",
+      "expected_id": "jnbs",
+      "expected_name": "Jamaica National Building Society",
+      "expected_abbreviation": "JNBS",
+      "expected_type": "building-society",
+      "expected_swift": null,
+      "expected_website": "https://www.jnbs.com"
+    },
+    {
+      "input": "cok",
+      "expected_id": "cok",
+      "expected_name": "COK Sodality Co-operative Credit Union",
+      "expected_abbreviation": "COK",
+      "expected_type": "credit-union",
+      "expected_swift": null,
+      "expected_website": "https://www.caborja.com"
+    },
+    {
+      "input": "jtaccu",
+      "expected_id": "jtaccu",
+      "expected_name": "Jamaica Teachers' Association Co-operative Credit Union",
+      "expected_abbreviation": "JTACCU",
+      "expected_type": "credit-union",
+      "expected_swift": null,
+      "expected_website": null
+    },
+    {
+      "input": "churches",
+      "expected_id": "churches",
+      "expected_name": "Churches Co-operative Credit Union",
+      "expected_abbreviation": "Churches",
+      "expected_type": "credit-union",
+      "expected_swift": null,
+      "expected_website": null
+    },
+    {
+      "input": "cwj",
+      "expected_id": "cwj",
+      "expected_name": "C&WJ Co-operative Credit Union",
+      "expected_abbreviation": "C&WJ",
+      "expected_type": "credit-union",
+      "expected_swift": null,
+      "expected_website": null
+    }
+  ],
+  "case_insensitive_lookups": [
+    { "input": "national commercial bank", "expected_id": "ncb" },
+    { "input": "SAGICOR BANK JAMAICA", "expected_id": "sagicor" },
+    { "input": "jn bank", "expected_id": "jn" },
+    { "input": "VM Building Society", "expected_id": "vm" }
+  ],
+  "null_lookups": [
+    "nonexistent",
+    "",
+    "xyz"
+  ],
+  "swift_codes": {
+    "ncb": "JABORJMK",
+    "scotiabank": "NOSCJMKN",
+    "jmmb": "JMMBKMKN",
+    "sagicor": "SAJAJMKN",
+    "fgb": "FGBLJMKN",
+    "citibank": "CITIJMKX",
+    "bns": "NOSCJMKN",
+    "jn": "JNBSJMKN"
+  },
+  "null_swift_codes": ["vm", "jnbs", "cok", "jtaccu", "churches", "cwj", "nonexistent"],
+  "search_tests": [
+    { "query": "NCB", "expected_contains_id": "ncb" },
+    { "query": "Scotia", "expected_contains_id": "scotiabank" },
+    { "query": "JMMB", "expected_contains_id": "jmmb" },
+    { "query": "citi", "expected_contains_id": "citibank" },
+    { "query": "VM", "expected_contains_id": "vm" },
+    { "query": "xyznotabank", "expected_count": 0 }
+  ],
+  "parish_branch_tests": [
+    { "parish": "St. Andrew", "min_count": 4 },
+    { "parish": "Kingston", "min_count": 3 },
+    { "parish": "St. James", "min_count": 3 },
+    { "parish": "Manchester", "min_count": 3 },
+    { "parish": "St. Thomas", "expected_count": 0 }
+  ],
+  "branch_samples": [
+    {
+      "name": "NCB Half Way Tree",
+      "bank_id": "ncb",
+      "parish": "St. Andrew",
+      "address": "Half Way Tree Road, Kingston 10"
+    },
+    {
+      "name": "Scotiabank Montego Bay",
+      "bank_id": "scotiabank",
+      "parish": "St. James",
+      "address": "6 Sam Sharpe Square, Montego Bay"
+    },
+    {
+      "name": "JN Half Way Tree",
+      "bank_id": "jn",
+      "parish": "St. Andrew",
+      "address": "2 Belmont Road, Kingston 5"
+    }
+  ]
+}

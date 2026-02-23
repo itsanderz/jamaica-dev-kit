@@ -1,0 +1,44 @@
+{
+  "name": "jamaica-cli",
+  "version": "0.1.0",
+  "description": "Jamaica Developer Toolkit CLI — validate TRNs, lookup fees, format currency, and more",
+  "type": "module",
+  "bin": {
+    "jamaica": "./dist/index.mjs"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/"
+  },
+  "keywords": ["jamaica", "cli", "toolkit", "trn", "developer"],
+  "license": "MIT",
+  "dependencies": {
+    "jamaica-trn": "workspace:*",
+    "jamaica-parishes": "workspace:*",
+    "jamaica-phone": "workspace:*",
+    "jamaica-currency": "workspace:*",
+    "jamaica-gov-fees": "workspace:*",
+    "jamaica-addresses": "workspace:*",
+    "jamaica-constants": "workspace:*",
+    "jamaica-holidays": "workspace:*",
+    "jamaica-tax": "workspace:*",
+    "jamaica-schools": "workspace:*",
+    "jamaica-health": "workspace:*",
+    "jamaica-banks": "workspace:*",
+    "jamaica-constituencies": "workspace:*",
+    "jamaica-transport": "workspace:*",
+    "jamaica-emergency": "workspace:*",
+    "jamaica-places": "workspace:*",
+    "jamaica-boj": "workspace:*",
+    "jamaica-open-data": "workspace:*",
+    "commander": "^13.0.0"
+  },
+  "devDependencies": {
+    "@jamaica-digital/tsconfig": "workspace:*",
+    "tsup": "^8.0.0",
+    "vitest": "^3.0.0",
+    "typescript": "^5.7.0"
+  }
+}

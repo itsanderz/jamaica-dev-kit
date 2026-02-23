@@ -1,0 +1,25 @@
+{
+  "name": "jamaica-health",
+  "version": "0.1.0",
+  "description": "Jamaica health facilities directory — hospitals, health centres, and regional health authorities",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "import": "./dist/index.mjs", "require": "./dist/index.js", "types": "./dist/index.d.ts" }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/"
+  },
+  "keywords": ["jamaica", "health", "hospitals", "health-centres", "medical"],
+  "license": "MIT",
+  "devDependencies": {
+    "@jamaica-digital/tsconfig": "workspace:*",
+    "tsup": "^8.0.0",
+    "vitest": "^3.0.0",
+    "typescript": "^5.7.0"
+  }
+}

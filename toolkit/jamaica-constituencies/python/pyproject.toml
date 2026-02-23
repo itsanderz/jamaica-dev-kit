@@ -1,0 +1,9 @@
+[project]
+name = "jamaica-constituencies"
+version = "0.1.0"
+description = "Jamaica electoral constituencies — all 63 with parish mapping"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

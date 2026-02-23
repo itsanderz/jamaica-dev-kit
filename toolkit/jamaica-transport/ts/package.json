@@ -1,0 +1,25 @@
+{
+  "name": "jamaica-transport",
+  "version": "0.1.0",
+  "description": "Jamaica transport infrastructure — airports, seaports, vehicle classifications, and road network data",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "import": "./dist/index.mjs", "require": "./dist/index.js", "types": "./dist/index.d.ts" }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/"
+  },
+  "keywords": ["jamaica", "transport", "airports", "seaports", "vehicles", "roads"],
+  "license": "MIT",
+  "devDependencies": {
+    "@jamaica-digital/tsconfig": "workspace:*",
+    "tsup": "^8.0.0",
+    "vitest": "^3.0.0",
+    "typescript": "^5.7.0"
+  }
+}

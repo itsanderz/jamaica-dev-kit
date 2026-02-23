@@ -1,0 +1,39 @@
+{
+  "name": "jamaica-react",
+  "version": "0.1.0",
+  "description": "React hooks and components for Jamaica data — TRN input, phone input, parish select, currency formatting",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "import": "./dist/index.mjs", "require": "./dist/index.js", "types": "./dist/index.d.ts" }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/"
+  },
+  "keywords": ["jamaica", "react", "hooks", "components", "trn", "phone", "parish"],
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "jamaica-trn": "workspace:*",
+    "jamaica-phone": "workspace:*",
+    "jamaica-parishes": "workspace:*",
+    "jamaica-currency": "workspace:*"
+  },
+  "devDependencies": {
+    "@jamaica-digital/tsconfig": "workspace:*",
+    "@testing-library/react": "^16.0.0",
+    "@types/react": "^19.0.0",
+    "happy-dom": "^17.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.0.0",
+    "vitest": "^3.0.0",
+    "typescript": "^5.7.0"
+  }
+}

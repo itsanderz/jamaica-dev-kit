@@ -1,0 +1,106 @@
+{
+  "formatJMD": [
+    { "input": 0, "expected": "J$0.00" },
+    { "input": 1, "expected": "J$1.00" },
+    { "input": 1234.56, "expected": "J$1,234.56" },
+    { "input": 1000000, "expected": "J$1,000,000.00" },
+    { "input": 0.5, "expected": "J$0.50" },
+    { "input": 99.999, "expected": "J$100.00" },
+    { "input": -500.75, "expected": "-J$500.75" },
+    { "input": 155.47, "expected": "J$155.47" },
+    {
+      "input": 1234.56,
+      "options": { "showSymbol": false },
+      "expected": "1,234.56"
+    },
+    {
+      "input": 1234.56,
+      "options": { "decimals": 0 },
+      "expected": "J$1,235"
+    },
+    {
+      "input": 1234.56,
+      "options": { "useGrouping": false },
+      "expected": "J$1234.56"
+    },
+    {
+      "input": 1234.5,
+      "options": { "decimals": 3 },
+      "expected": "J$1,234.500"
+    }
+  ],
+  "parseJMD": [
+    { "input": "J$1,234.56", "expected": 1234.56 },
+    { "input": "1234.56", "expected": 1234.56 },
+    { "input": "J$0.00", "expected": 0 },
+    { "input": "J$1,000,000.00", "expected": 1000000 },
+    { "input": "-J$500.75", "expected": -500.75 },
+    { "input": "J$155.47", "expected": 155.47 },
+    { "input": "  J$ 1,234.56 ", "expected": 1234.56 },
+    { "input": "", "expected": null },
+    { "input": "abc", "expected": null },
+    { "input": "J$", "expected": null }
+  ],
+  "formatUSD": [
+    { "input": 0, "expected": "US$0.00" },
+    { "input": 1234.56, "expected": "US$1,234.56" },
+    { "input": -50.5, "expected": "-US$50.50" }
+  ],
+  "jmdToUSD": [
+    { "jmd": 155.47, "rate": 155.47, "expected": 1.0 },
+    { "jmd": 0, "rate": 155.47, "expected": 0 },
+    { "jmd": 310.94, "rate": 155.47, "expected": 2.0 },
+    { "jmd": 1000, "rate": 155.47, "expected": 6.432 },
+    { "jmd": 1000, "comment": "uses default rate" }
+  ],
+  "usdToJMD": [
+    { "usd": 1.0, "rate": 155.47, "expected": 155.47 },
+    { "usd": 0, "rate": 155.47, "expected": 0 },
+    { "usd": 100, "rate": 155.47, "expected": 15547.0 },
+    { "usd": 10, "comment": "uses default rate" }
+  ],
+  "addGCT": [
+    { "amount": 100, "expected": 115 },
+    { "amount": 0, "expected": 0 },
+    { "amount": 1000, "expected": 1150 },
+    { "amount": 200, "rate": 0.25, "expected": 250 },
+    { "amount": 99.99, "expected": 114.9885 }
+  ],
+  "removeGCT": [
+    { "amountWithGCT": 115, "expected": 100 },
+    { "amountWithGCT": 0, "expected": 0 },
+    { "amountWithGCT": 1150, "expected": 1000 },
+    { "amountWithGCT": 250, "rate": 0.25, "expected": 200 }
+  ],
+  "addTelecomGCT": [
+    { "amount": 100, "expected": 125 },
+    { "amount": 0, "expected": 0 },
+    { "amount": 1000, "expected": 1250 }
+  ],
+  "formatWithGCT": [
+    {
+      "amount": 1000,
+      "expected": {
+        "base": "J$1,000.00",
+        "gct": "J$150.00",
+        "total": "J$1,150.00"
+      }
+    },
+    {
+      "amount": 500.50,
+      "expected": {
+        "base": "J$500.50",
+        "gct": "J$75.08",
+        "total": "J$575.58"
+      }
+    },
+    {
+      "amount": 0,
+      "expected": {
+        "base": "J$0.00",
+        "gct": "J$0.00",
+        "total": "J$0.00"
+      }
+    }
+  ]
+}

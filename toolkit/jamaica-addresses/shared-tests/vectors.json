@@ -1,0 +1,204 @@
+{
+  "parseAddress": [
+    {
+      "input": "123 Main Street, Kingston 10",
+      "expected": {
+        "streetNumber": "123",
+        "streetName": "Main Street",
+        "parish": "Kingston",
+        "kingstonSector": 10,
+        "raw": "123 Main Street, Kingston 10"
+      }
+    },
+    {
+      "input": "Lot 5, Rose Hall, St. James",
+      "expected": {
+        "unit": "Lot 5",
+        "community": "Rose Hall",
+        "parish": "St. James",
+        "raw": "Lot 5, Rose Hall, St. James"
+      }
+    },
+    {
+      "input": "Shop 3, Town Centre Plaza, May Pen, Clarendon",
+      "expected": {
+        "unit": "Shop 3",
+        "streetName": "Town Centre Plaza",
+        "community": "May Pen",
+        "parish": "Clarendon",
+        "raw": "Shop 3, Town Centre Plaza, May Pen, Clarendon"
+      }
+    },
+    {
+      "input": "District of Accompong, St. Elizabeth",
+      "expected": {
+        "district": "Accompong",
+        "parish": "St. Elizabeth",
+        "raw": "District of Accompong, St. Elizabeth"
+      }
+    },
+    {
+      "input": "Half Way Tree, St. Andrew",
+      "expected": {
+        "community": "Half Way Tree",
+        "parish": "St. Andrew",
+        "raw": "Half Way Tree, St. Andrew"
+      }
+    },
+    {
+      "input": "45 Hope Road, Kingston 6",
+      "expected": {
+        "streetNumber": "45",
+        "streetName": "Hope Road",
+        "parish": "Kingston",
+        "kingstonSector": 6,
+        "raw": "45 Hope Road, Kingston 6"
+      }
+    },
+    {
+      "input": "12 Duke Street, Kingston",
+      "expected": {
+        "streetNumber": "12",
+        "streetName": "Duke Street",
+        "parish": "Kingston",
+        "raw": "12 Duke Street, Kingston"
+      }
+    },
+    {
+      "input": "Lot 12, Stony Hill, Saint Andrew",
+      "expected": {
+        "unit": "Lot 12",
+        "community": "Stony Hill",
+        "parish": "St. Andrew",
+        "raw": "Lot 12, Stony Hill, Saint Andrew"
+      }
+    },
+    {
+      "input": "7 Church Street, Montego Bay, St. James",
+      "expected": {
+        "streetNumber": "7",
+        "streetName": "Church Street",
+        "community": "Montego Bay",
+        "parish": "St. James",
+        "raw": "7 Church Street, Montego Bay, St. James"
+      }
+    },
+    {
+      "input": "Apt 4, 20 Barbican Road, Kingston 8",
+      "expected": {
+        "unit": "Apt 4",
+        "streetNumber": "20",
+        "streetName": "Barbican Road",
+        "parish": "Kingston",
+        "kingstonSector": 8,
+        "raw": "Apt 4, 20 Barbican Road, Kingston 8"
+      }
+    },
+    {
+      "input": "Port Antonio, Portland",
+      "expected": {
+        "community": "Port Antonio",
+        "parish": "Portland",
+        "raw": "Port Antonio, Portland"
+      }
+    },
+    {
+      "input": "Spanish Town, St. Catherine",
+      "expected": {
+        "community": "Spanish Town",
+        "parish": "St. Catherine",
+        "raw": "Spanish Town, St. Catherine"
+      }
+    },
+    {
+      "input": "Suite 10, 5 Knutsford Blvd, Kingston 5",
+      "expected": {
+        "unit": "Suite 10",
+        "streetNumber": "5",
+        "streetName": "Knutsford Blvd",
+        "parish": "Kingston",
+        "kingstonSector": 5,
+        "raw": "Suite 10, 5 Knutsford Blvd, Kingston 5"
+      }
+    },
+    {
+      "input": "District of Christiana, Manchester",
+      "expected": {
+        "district": "Christiana",
+        "parish": "Manchester",
+        "raw": "District of Christiana, Manchester"
+      }
+    },
+    {
+      "input": "Negril, Westmoreland",
+      "expected": {
+        "community": "Negril",
+        "parish": "Westmoreland",
+        "raw": "Negril, Westmoreland"
+      }
+    }
+  ],
+  "extractParish": [
+    { "input": "123 Main Street, Kingston 10", "expected": "Kingston" },
+    { "input": "Rose Hall, St. James", "expected": "St. James" },
+    { "input": "May Pen, Clarendon", "expected": "Clarendon" },
+    { "input": "Half Way Tree, Saint Andrew", "expected": "St. Andrew" },
+    { "input": "No parish here", "expected": null },
+    { "input": "Negril, Westmoreland", "expected": "Westmoreland" },
+    { "input": "Port Antonio, Portland", "expected": "Portland" },
+    { "input": "Ocho Rios, St Ann", "expected": "St. Ann" }
+  ],
+  "isKingstonAddress": [
+    { "input": "123 Main Street, Kingston 10", "expected": true },
+    { "input": "Half Way Tree, St. Andrew", "expected": true },
+    { "input": "Rose Hall, St. James", "expected": false },
+    { "input": "12 Duke Street, KGN", "expected": true },
+    { "input": "Spanish Town, St. Catherine", "expected": false }
+  ],
+  "getKingstonSector": [
+    { "input": "123 Main Street, Kingston 10", "expected": 10 },
+    { "input": "45 Hope Road, Kingston 6", "expected": 6 },
+    { "input": "12 Duke Street, Kingston", "expected": null },
+    { "input": "Rose Hall, St. James", "expected": null },
+    { "input": "Suite 10, 5 Knutsford Blvd, Kingston 5", "expected": 5 },
+    { "input": "Kingston 20", "expected": 20 },
+    { "input": "Kingston 25", "expected": null }
+  ],
+  "normalizeAddress": [
+    {
+      "input": {
+        "streetNumber": "123",
+        "streetName": "Main Street",
+        "parish": "Kingston",
+        "kingstonSector": 10,
+        "raw": "123 Main Street, Kingston 10"
+      },
+      "expected": "123 Main Street, Kingston 10"
+    },
+    {
+      "input": {
+        "unit": "Lot 5",
+        "community": "Rose Hall",
+        "parish": "St. James",
+        "raw": "Lot 5, Rose Hall, St. James"
+      },
+      "expected": "Lot 5, Rose Hall, St. James"
+    },
+    {
+      "input": {
+        "district": "Accompong",
+        "parish": "St. Elizabeth",
+        "raw": "District of Accompong, St. Elizabeth"
+      },
+      "expected": "District of Accompong, St. Elizabeth"
+    },
+    {
+      "input": {
+        "community": "Half Way Tree",
+        "parish": "St. Andrew",
+        "raw": "Half Way Tree, St. Andrew"
+      },
+      "expected": "Half Way Tree, St. Andrew"
+    }
+  ]
+}

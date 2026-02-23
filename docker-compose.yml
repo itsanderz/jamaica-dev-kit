@@ -1,0 +1,66 @@
+services:
+  ai-assistant-api:
+    build:
+      context: .
+      dockerfile: apps/ai-assistant-api/Dockerfile
+    ports:
+      - "${AI_ASSISTANT_API_PORT:-8001}:8000"
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - CHROMADB_HOST=chromadb
+      - CHROMADB_PORT=8000
+      - DATA_DIR=/app/data
+    volumes:
+      - ./apps/ai-assistant-api/app:/app/app
+      - ./data:/app/data:ro
+    depends_on:
+      - chromadb
+    restart: unless-stopped
+
+  addressing-api:
+    build:
+      context: .
+      dockerfile: apps/addressing-api/Dockerfile
+    ports:
+      - "${ADDRESSING_API_PORT:-8002}:8000"
+    environment:
+      - DATA_DIR=/app/data
+    volumes:
+      - ./apps/addressing-api/app:/app/app
+      - ./data:/app/data:ro
+    restart: unless-stopped
+
+  ai-assistant-web:
+    build:
+      context: .
+      dockerfile: apps/ai-assistant-web/Dockerfile
+    ports:
+      - "${AI_ASSISTANT_WEB_PORT:-3000}:3000"
+    environment:
+      - NEXT_PUBLIC_AI_ASSISTANT_API_URL=http://localhost:${AI_ASSISTANT_API_PORT:-8001}
+    depends_on:
+      - ai-assistant-api
+    restart: unless-stopped
+
+  addressing-web:
+    build:
+      context: .
+      dockerfile: apps/addressing-web/Dockerfile
+    ports:
+      - "${ADDRESSING_WEB_PORT:-3001}:3000"
+    environment:
+      - NEXT_PUBLIC_ADDRESSING_API_URL=http://localhost:${ADDRESSING_API_PORT:-8002}
+    depends_on:
+      - addressing-api
+    restart: unless-stopped
+
+  chromadb:
+    image: chromadb/chroma:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - chromadb_data:/chroma/chroma
+    restart: unless-stopped
+
+volumes:
+  chromadb_data:

@@ -1,0 +1,9 @@
+[project]
+name = "jamaica-tax"
+version = "0.1.0"
+description = "Jamaica tax calculations — income tax, NIS, NHT, Education Tax, payroll"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

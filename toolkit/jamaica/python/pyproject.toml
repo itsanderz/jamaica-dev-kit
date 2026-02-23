@@ -1,0 +1,27 @@
+[project]
+name = "jamaica"
+version = "0.1.0"
+description = "The complete Jamaica developer toolkit"
+requires-python = ">=3.11"
+dependencies = [
+  "jamaica-trn>=0.1.0",
+  "jamaica-parishes>=0.1.0",
+  "jamaica-phone>=0.1.0",
+  "jamaica-currency>=0.1.0",
+  "jamaica-gov-fees>=0.1.0",
+  "jamaica-addresses>=0.1.0",
+  "jamaica-constants>=0.1.0",
+  "jamaica-holidays>=0.1.0",
+  "jamaica-tax>=0.1.0",
+  "jamaica-schools>=0.1.0",
+  "jamaica-health>=0.1.0",
+  "jamaica-banks>=0.1.0",
+  "jamaica-constituencies>=0.1.0",
+  "jamaica-transport>=0.1.0",
+  "jamaica-emergency>=0.1.0",
+  "jamaica-places>=0.1.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

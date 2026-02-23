@@ -1,0 +1,9 @@
+[project]
+name = "jamaica-constants"
+version = "0.1.0"
+description = "Jamaica country constants — codes, timezone, symbols, and national data"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

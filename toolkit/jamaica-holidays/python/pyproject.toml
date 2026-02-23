@@ -1,0 +1,9 @@
+[project]
+name = "jamaica-holidays"
+version = "0.1.0"
+description = "Jamaica public holidays, business day calculations, and working day utilities"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

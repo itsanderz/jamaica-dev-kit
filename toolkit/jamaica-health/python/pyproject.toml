@@ -1,0 +1,9 @@
+[project]
+name = "jamaica-health"
+version = "0.1.0"
+description = "Jamaica health facilities directory — hospitals, health centres, and regional health authorities"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

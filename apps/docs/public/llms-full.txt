@@ -1,0 +1,402 @@
+# Jamaica Developer Kit — Complete API Reference
+
+> This file contains the complete API documentation for the Jamaica Developer Kit.
+> It is designed for consumption by AI coding assistants and LLMs.
+> For interactive documentation, visit https://jamaica-dev.org
+
+## Installation
+
+```bash
+# Install everything
+npm install jamaica        # TypeScript/JavaScript
+pip install jamaica        # Python
+
+# Or install individual packages
+npm install jamaica-trn jamaica-phone jamaica-currency
+pip install jamaica-trn jamaica-phone jamaica-currency
+
+# CLI
+npm install -g jamaica-cli
+```
+
+## Import Patterns
+
+```typescript
+// Meta-package — flat imports (most common)
+import { formatTRN, formatJMD, calculatePayroll } from 'jamaica';
+
+// Meta-package — namespaced (avoids collisions)
+import { trn, currency, tax } from 'jamaica';
+trn.formatTRN('123456784');
+currency.formatJMD(5000);
+
+// Meta-package — sub-path (tree-shakeable)
+import { formatTRN } from 'jamaica/trn';
+import { formatJMD } from 'jamaica/currency';
+
+// Individual packages (smallest bundle)
+import { formatTRN } from 'jamaica-trn';
+import { formatJMD } from 'jamaica-currency';
+```
+
+```python
+# Meta-package — flat imports
+from jamaica import format_trn, format_jmd, calculate_payroll
+
+# Meta-package — namespaced
+from jamaica import trn, currency, tax
+trn.format_trn("123456784")
+currency.format_jmd(5000)
+
+# Individual packages
+from jamaica_trn import format_trn
+from jamaica_currency import format_jmd
+```
+
+---
+
+## jamaica-trn — TRN Validation
+
+Jamaica Taxpayer Registration Number: 9 digits with mod-11 check digit. Format: XXX-XXX-XXD
+
+```typescript
+// TypeScript
+import { isValidTRN, formatTRN, unformatTRN, generateTestTRN, getTRNCheckDigit } from 'jamaica-trn';
+
+isValidTRN('123-456-784')     // true (valid check digit)
+isValidTRN('123-456-789')     // false (invalid check digit)
+formatTRN('123456784')        // '123-456-784'
+unformatTRN('123-456-784')    // '123456784'
+generateTestTRN()             // Random valid TRN for testing
+getTRNCheckDigit('12345678')  // 4
+```
+
+```python
+# Python
+from jamaica_trn import is_valid_trn, format_trn, unformat_trn, generate_test_trn
+
+is_valid_trn("123-456-784")   # True
+format_trn("123456784")       # "123-456-784"
+```
+
+---
+
+## jamaica-phone — Phone Number Validation
+
+Jamaica uses area codes +1-876 and +1-658. 10-digit numbers (area code + 7 digits).
+
+```typescript
+import { isValidJamaicanNumber, parsePhone, formatNational, formatE164, getCarrier, isMobile } from 'jamaica-phone';
+
+isValidJamaicanNumber('8765551234')    // true
+isValidJamaicanNumber('+18765551234')  // true
+formatNational('8765551234')           // '(876) 555-1234'
+formatE164('8765551234')               // '+18765551234'
+
+const parsed = parsePhone('8765551234');
+// { areaCode: '876', subscriberNumber: '5551234', ... }
+
+// NOTE: getCarrier() and isMobile() are unreliable since Jamaica
+// introduced number portability in May 2015.
+```
+
+```python
+from jamaica_phone import is_valid_jamaican_number, format_national, format_e164
+
+is_valid_jamaican_number("8765551234")  # True
+format_national("8765551234")           # "(876) 555-1234"
+```
+
+---
+
+## jamaica-currency — JMD Formatting & GCT
+
+```typescript
+import { formatJMD, parseJMD, addGCT, removeGCT, formatWithGCT, jmdToUSD, usdToJMD, GCT_RATE } from 'jamaica-currency';
+
+formatJMD(5000)              // 'J$5,000.00'
+formatJMD(5000, { decimals: 0 })  // 'J$5,000'
+parseJMD('J$5,000.00')      // 5000
+
+// GCT (General Consumption Tax) = 15%
+addGCT(1000)                 // 1150
+removeGCT(1150)              // 1000
+formatWithGCT(1000)          // { subtotal: 1000, gct: 150, total: 1150 }
+
+// Currency conversion (uses default rate — fetch live rates for production)
+jmdToUSD(15000)              // ~96.54 (at default rate)
+usdToJMD(100)                // ~15547 (at default rate)
+```
+
+---
+
+## jamaica-tax — Payroll & Income Tax
+
+```typescript
+import { calculatePayroll, calculateIncomeTax, getIncomeTaxBrackets, ANNUAL_THRESHOLD } from 'jamaica-tax';
+
+// Full payroll for J$200,000 monthly gross
+const payroll = calculatePayroll(200_000);
+// {
+//   period: 'monthly',
+//   grossPay: 200000,
+//   incomeTax: ...,        // PAYE
+//   nis: ...,              // 3% (capped at J$5M/year)
+//   nht: ...,              // 2%
+//   educationTax: ...,     // 2.25%
+//   totalDeductions: ...,
+//   netPay: ...,
+//   employerNIS: ...,      // 3%
+//   employerNHT: ...,      // 3%
+//   employerEducationTax: ...,  // 3.5%
+//   employerHEART: ...,    // 3%
+//   totalEmployerContributions: ...,
+//   totalCostToEmployer: ...
+// }
+
+// Income tax only
+const tax = calculateIncomeTax(3_000_000);
+// { annualIncome, threshold: 1500096, taxableIncome, tax, effectiveRate, brackets: [...] }
+
+// Tax threshold
+ANNUAL_THRESHOLD  // 1500096 (J$1,500,096/year)
+
+// Periods: 'monthly' (default), 'fortnightly', 'weekly', 'annual'
+calculatePayroll(50_000, 'weekly');
+```
+
+---
+
+## jamaica-parishes — Parish Data
+
+```typescript
+import { getAllParishes, getParish, getDistanceKm } from 'jamaica-parishes';
+
+const parishes = getAllParishes();  // 14 parishes
+// [{ name: 'Kingston', code: 'KIN', capital: 'Kingston', population: 89057, area: 25, coordinates: {...}, ... }]
+
+const kingston = getParish('KIN');
+// { name: 'Kingston', code: 'KIN', capital: 'Kingston', population: 89057, ... }
+
+// Distance between parish capitals (Haversine)
+getDistanceKm('KIN', 'MOB');  // ~154 km (Kingston to Montego Bay)
+```
+
+---
+
+## jamaica-gov-fees — Government Service Fees
+
+```typescript
+import { searchFees, getPassportFee, getVehicleRegistrationFee, getAllFees, getAgencies } from 'jamaica-gov-fees';
+
+// Search all fees
+const results = searchFees('passport');  // All passport-related fees
+
+// Specific lookups
+getPassportFee('adult', 'standard');   // { jmd: ..., usd: ... }
+getVehicleRegistrationFee(1600);       // Fee for 1600cc engine
+getAgencies();                         // 10 government agencies
+getAllFees();                          // All 60+ fees
+```
+
+---
+
+## jamaica-holidays — Public Holidays & Business Days
+
+```typescript
+import { getHolidays, isPublicHoliday, isBusinessDay, getWorkingDays, getNextHoliday } from 'jamaica-holidays';
+
+getHolidays(2025);               // 10 holidays for 2025
+isPublicHoliday('2025-12-25');   // true (Christmas Day)
+isBusinessDay('2025-01-01');     // false (New Year's Day)
+isBusinessDay('2025-01-02');     // true (regular Thursday)
+
+// Working days between two dates
+getWorkingDays('2025-01-01', '2025-01-31');  // excludes weekends & holidays
+
+// Next upcoming holiday
+getNextHoliday('2025-06-01');  // { date: '2025-08-01', name: "Emancipation Day" }
+
+// Sunday substitution: if a holiday falls on Sunday, Monday is observed
+// Example: Christmas 2022 was Sunday → Dec 26 observed, Boxing Day → Dec 27
+```
+
+---
+
+## jamaica-addresses — Address Parsing
+
+```typescript
+import { parseAddress, formatAddress, extractParish, isKingstonAddress } from 'jamaica-addresses';
+
+const parsed = parseAddress('123 Main Street, Kingston 10');
+// { streetNumber: '123', streetName: 'Main Street', parish: 'Kingston', kingstonSector: 10, ... }
+
+formatAddress(parsed);  // '123 Main Street, Kingston 10'
+extractParish('somewhere in St. Andrew');  // 'St. Andrew'
+isKingstonAddress('Kingston 5');  // true
+```
+
+---
+
+## jamaica-schools — School Directory
+
+```typescript
+import { getSchools, getUniversities, searchSchools, getSchoolsByParish } from 'jamaica-schools';
+
+getSchools();                          // 70+ schools
+getUniversities();                     // UWI, UTech, NCU, CMU, Mico, etc.
+searchSchools('Kingston');             // Schools with "Kingston" in name
+getSchoolsByParish('St. Andrew');      // Schools in St. Andrew
+getSchoolsByType('secondary');         // All secondary schools
+```
+
+---
+
+## jamaica-health — Health Facilities
+
+```typescript
+import { getHospitals, getRegionalAuthority, getNearestFacility } from 'jamaica-health';
+
+getHospitals();                        // 22 hospitals with GPS coordinates
+getRegionalAuthority('Manchester');    // { id: 'srha', name: 'Southern RHA', ... }
+getNearestFacility(18.0, -76.8);      // Nearest facility to coordinates
+getNearestFacility(18.0, -76.8, 'hospital');  // Nearest hospital only
+```
+
+---
+
+## jamaica-banks — Banking Directory
+
+```typescript
+import { getBanks, getSwiftCode, getBankBranches } from 'jamaica-banks';
+
+getBanks();                // 14 institutions (NCB, Scotiabank, JMMB, JN, etc.)
+getSwiftCode('ncb');       // 'JABORJMK'
+getBankBranches('ncb');    // 10 NCB branches with addresses
+```
+
+---
+
+## jamaica-constituencies — Electoral Constituencies
+
+```typescript
+import { getConstituencies, getConstituencyByParish } from 'jamaica-constituencies';
+
+getConstituencies();                      // All 63 constituencies
+getConstituencyByParish('St. Andrew');    // 12 constituencies in St. Andrew
+```
+
+---
+
+## jamaica-transport — Transport Infrastructure
+
+```typescript
+import { getAirport, getAirports, getRoadNetwork, getVehicleClasses } from 'jamaica-transport';
+
+getAirport('KIN');      // Norman Manley International (IATA: KIN, ICAO: MKJP)
+getAirport('MBJ');      // Sangster International
+getRoadNetwork();       // { totalKm: 22121, pavedKm: 15462, ... }
+getVehicleClasses();    // 10 vehicle classifications
+```
+
+---
+
+## jamaica-emergency — Emergency Services
+
+```typescript
+import { getEmergencyNumbers, getPoliceStations, getDisasterShelters } from 'jamaica-emergency';
+
+getEmergencyNumbers();  // { police: '119', ambulance: '110', fire: '110', disasterPreparedness: '116' }
+getPoliceStations();    // 23 stations across all parishes
+getDisasterShelters();  // 17 hurricane shelters
+```
+
+---
+
+## jamaica-places — Places Directory
+
+```typescript
+import { searchPlaces, getTowns, getPlacesByParish } from 'jamaica-places';
+
+searchPlaces('Montego');           // [{ name: 'Montego Bay', type: 'town', parish: 'St. James', ... }]
+getTowns();                        // All major towns and cities
+getPlacesByParish('St. Ann');      // All places in St. Ann
+```
+
+---
+
+## jamaica-constants — Country Reference Data
+
+```typescript
+import { COUNTRY_CODE, CALLING_CODE, EMERGENCY_NUMBER, TIMEZONE, FLAG_COLORS } from 'jamaica-constants';
+
+COUNTRY_CODE         // 'JM'
+CALLING_CODE         // '+1'
+EMERGENCY_NUMBER     // '119'
+TIMEZONE             // 'America/Jamaica'
+FLAG_COLORS          // { green: '#009B3A', gold: '#FED100', black: '#000000' }
+```
+
+---
+
+## CLI Usage
+
+```bash
+# Install globally
+npm install -g jamaica-cli
+
+# TRN
+jamaica trn validate 123-456-784
+jamaica trn format 123456784
+
+# Phone
+jamaica phone validate 8765551234
+jamaica phone format 8765551234
+
+# Currency
+jamaica currency format 5000
+jamaica currency gct 1000
+
+# Tax / Payroll
+jamaica tax payroll 200000
+jamaica tax income 3000000
+jamaica tax brackets
+
+# Fees
+jamaica fees search passport
+
+# Holidays
+jamaica holidays list 2025
+jamaica holidays check 2025-12-25
+
+# Schools
+jamaica schools list --parish "St. Andrew"
+jamaica schools universities
+
+# Health
+jamaica health hospitals
+jamaica health rha
+
+# Banks
+jamaica banks list
+jamaica banks swift ncb
+
+# Transport
+jamaica transport airports
+jamaica transport airport KIN
+
+# Emergency
+jamaica emergency numbers
+jamaica emergency police
+
+# Places
+jamaica places towns
+jamaica places search "Montego Bay"
+
+# Constituencies
+jamaica constituencies list
+jamaica constituencies count
+
+# All commands support --json flag
+jamaica tax payroll 200000 --json
+```

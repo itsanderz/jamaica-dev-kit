@@ -1,0 +1,313 @@
+{
+  "valid_numbers": [
+    {
+      "input": "8765551234",
+      "description": "10-digit 876 number, no formatting",
+      "expected": {
+        "isValid": true,
+        "countryCode": "1",
+        "areaCode": "876",
+        "localNumber": "5551234",
+        "e164": "+18765551234",
+        "national": "(876) 555-1234",
+        "local": "555-1234",
+        "international": "+1 (876) 555-1234"
+      }
+    },
+    {
+      "input": "6585551234",
+      "description": "10-digit 658 number, no formatting",
+      "expected": {
+        "isValid": true,
+        "countryCode": "1",
+        "areaCode": "658",
+        "localNumber": "5551234",
+        "e164": "+16585551234",
+        "national": "(658) 555-1234",
+        "local": "555-1234",
+        "international": "+1 (658) 555-1234"
+      }
+    },
+    {
+      "input": "18765551234",
+      "description": "11-digit with country code 1",
+      "expected": {
+        "isValid": true,
+        "countryCode": "1",
+        "areaCode": "876",
+        "localNumber": "5551234",
+        "e164": "+18765551234",
+        "national": "(876) 555-1234",
+        "local": "555-1234",
+        "international": "+1 (876) 555-1234"
+      }
+    },
+    {
+      "input": "+18765551234",
+      "description": "E.164 format with +1",
+      "expected": {
+        "isValid": true,
+        "countryCode": "1",
+        "areaCode": "876",
+        "localNumber": "5551234",
+        "e164": "+18765551234",
+        "national": "(876) 555-1234",
+        "local": "555-1234",
+        "international": "+1 (876) 555-1234"
+      }
+    },
+    {
+      "input": "+16585551234",
+      "description": "E.164 format with +1 and 658 area code",
+      "expected": {
+        "isValid": true,
+        "countryCode": "1",
+        "areaCode": "658",
+        "localNumber": "5551234",
+        "e164": "+16585551234",
+        "national": "(658) 555-1234",
+        "local": "555-1234",
+        "international": "+1 (658) 555-1234"
+      }
+    },
+    {
+      "input": "(876) 555-1234",
+      "description": "National format with parentheses",
+      "expected": {
+        "isValid": true,
+        "countryCode": "1",
+        "areaCode": "876",
+        "localNumber": "5551234",
+        "e164": "+18765551234",
+        "national": "(876) 555-1234",
+        "local": "555-1234",
+        "international": "+1 (876) 555-1234"
+      }
+    },
+    {
+      "input": "876-555-1234",
+      "description": "Dashed national format",
+      "expected": {
+        "isValid": true,
+        "countryCode": "1",
+        "areaCode": "876",
+        "localNumber": "5551234",
+        "e164": "+18765551234",
+        "national": "(876) 555-1234",
+        "local": "555-1234",
+        "international": "+1 (876) 555-1234"
+      }
+    },
+    {
+      "input": "876 555 1234",
+      "description": "Space-separated format",
+      "expected": {
+        "isValid": true,
+        "countryCode": "1",
+        "areaCode": "876",
+        "localNumber": "5551234",
+        "e164": "+18765551234",
+        "national": "(876) 555-1234",
+        "local": "555-1234",
+        "international": "+1 (876) 555-1234"
+      }
+    },
+    {
+      "input": "876.555.1234",
+      "description": "Dot-separated format",
+      "expected": {
+        "isValid": true,
+        "countryCode": "1",
+        "areaCode": "876",
+        "localNumber": "5551234",
+        "e164": "+18765551234",
+        "national": "(876) 555-1234",
+        "local": "555-1234",
+        "international": "+1 (876) 555-1234"
+      }
+    },
+    {
+      "input": "5551234",
+      "description": "7-digit local number only",
+      "expected": {
+        "isValid": false
+      }
+    },
+    {
+      "input": "+1 (876) 299-1234",
+      "description": "Full international with 876 and 2xx prefix (Digicel-ish)",
+      "expected": {
+        "isValid": true,
+        "countryCode": "1",
+        "areaCode": "876",
+        "localNumber": "2991234",
+        "e164": "+18762991234",
+        "national": "(876) 299-1234",
+        "local": "299-1234",
+        "international": "+1 (876) 299-1234"
+      }
+    },
+    {
+      "input": "+1 (876) 927-1234",
+      "description": "876-9xx landline prefix",
+      "expected": {
+        "isValid": true,
+        "countryCode": "1",
+        "areaCode": "876",
+        "localNumber": "9271234",
+        "e164": "+18769271234",
+        "national": "(876) 927-1234",
+        "local": "927-1234",
+        "international": "+1 (876) 927-1234"
+      }
+    }
+  ],
+  "invalid_numbers": [
+    {
+      "input": "",
+      "description": "Empty string"
+    },
+    {
+      "input": "abc",
+      "description": "Non-numeric"
+    },
+    {
+      "input": "1234567",
+      "description": "7 digits but no area code (ambiguous)"
+    },
+    {
+      "input": "2125551234",
+      "description": "Valid NANP but not Jamaican (212 is NYC)"
+    },
+    {
+      "input": "+442075551234",
+      "description": "UK number"
+    },
+    {
+      "input": "8760551234",
+      "description": "876 but local starts with 0 (invalid NXX)"
+    },
+    {
+      "input": "8761551234",
+      "description": "876 but local starts with 1 (invalid NXX)"
+    },
+    {
+      "input": "87655512345",
+      "description": "Too many digits after area code"
+    },
+    {
+      "input": "876555123",
+      "description": "Too few digits after area code"
+    },
+    {
+      "input": "0008765551234",
+      "description": "Leading zeros making it too long"
+    }
+  ],
+  "carrier_detection": [
+    {
+      "input": "8763001234",
+      "expected_carrier": "flow",
+      "description": "876-3xx is typically Flow mobile"
+    },
+    {
+      "input": "8764501234",
+      "expected_carrier": "flow",
+      "description": "876-4xx is typically Flow mobile"
+    },
+    {
+      "input": "8765001234",
+      "expected_carrier": "flow",
+      "description": "876-5xx is typically Flow mobile"
+    },
+    {
+      "input": "8762991234",
+      "expected_carrier": "digicel",
+      "description": "876-2xx is typically Digicel mobile"
+    },
+    {
+      "input": "8768001234",
+      "expected_carrier": "digicel",
+      "description": "876-8xx is typically Digicel mobile"
+    },
+    {
+      "input": "8763501234",
+      "expected_carrier": "digicel",
+      "description": "876-3[5-9]x is typically Digicel mobile"
+    },
+    {
+      "input": "8769271234",
+      "expected_carrier": "landline",
+      "description": "876-9xx is typically landline"
+    },
+    {
+      "input": "8766001234",
+      "expected_carrier": "landline",
+      "description": "876-6xx is typically landline"
+    },
+    {
+      "input": "8767001234",
+      "expected_carrier": "landline",
+      "description": "876-7xx is typically landline"
+    },
+    {
+      "input": "6585551234",
+      "expected_carrier": "unknown",
+      "description": "658 area code carrier mapping is less established"
+    }
+  ],
+  "area_code_tests": [
+    {
+      "input": "8765551234",
+      "is876": true,
+      "is658": false
+    },
+    {
+      "input": "6585551234",
+      "is876": false,
+      "is658": true
+    },
+    {
+      "input": "+18765551234",
+      "is876": true,
+      "is658": false
+    },
+    {
+      "input": "+16585551234",
+      "is876": false,
+      "is658": true
+    }
+  ],
+  "mobile_detection": [
+    {
+      "input": "8763001234",
+      "isMobile": true,
+      "description": "876-3xx mobile"
+    },
+    {
+      "input": "8764501234",
+      "isMobile": true,
+      "description": "876-4xx mobile"
+    },
+    {
+      "input": "8768001234",
+      "isMobile": true,
+      "description": "876-8xx mobile"
+    },
+    {
+      "input": "8769271234",
+      "isMobile": false,
+      "description": "876-9xx landline"
+    },
+    {
+      "input": "8766001234",
+      "isMobile": false,
+      "description": "876-6xx landline"
+    },
+    {
+      "input": "8767001234",
+      "isMobile": false,
+      "description": "876-7xx landline"
+    }
+  ]
+}

@@ -1,0 +1,253 @@
+{
+  "description": "Shared test vectors for jamaica-health TypeScript and Python implementations",
+  "version": "0.1.0",
+
+  "counts": {
+    "total_facilities": 55,
+    "total_hospitals": 22,
+    "total_health_centres": 33,
+    "total_regional_authorities": 4,
+    "total_parishes": 14
+  },
+
+  "hospitals_by_parish": {
+    "Kingston": {
+      "count": 4,
+      "names": [
+        "Kingston Public Hospital",
+        "Victoria Jubilee Hospital",
+        "Bustamante Hospital for Children",
+        "Bellevue Hospital"
+      ]
+    },
+    "St. Andrew": {
+      "count": 2,
+      "names": [
+        "University Hospital of the West Indies",
+        "National Chest Hospital"
+      ]
+    },
+    "St. Catherine": {
+      "count": 2,
+      "names": ["Spanish Town Hospital", "Linstead Public Hospital"]
+    },
+    "Clarendon": {
+      "count": 2,
+      "names": ["May Pen Hospital", "Lionel Town Hospital"]
+    },
+    "Manchester": {
+      "count": 2,
+      "names": ["Mandeville Regional Hospital", "Percy Junor Hospital"]
+    },
+    "St. Elizabeth": {
+      "count": 1,
+      "names": ["Black River Hospital"]
+    },
+    "St. James": {
+      "count": 1,
+      "names": ["Cornwall Regional Hospital"]
+    },
+    "Trelawny": {
+      "count": 1,
+      "names": ["Falmouth Hospital"]
+    },
+    "Hanover": {
+      "count": 1,
+      "names": ["Noel Holmes Hospital"]
+    },
+    "Westmoreland": {
+      "count": 1,
+      "names": ["Savanna-la-Mar Hospital"]
+    },
+    "St. Ann": {
+      "count": 1,
+      "names": ["St. Ann's Bay Regional Hospital"]
+    },
+    "St. Mary": {
+      "count": 2,
+      "names": ["Port Maria Hospital", "Annotto Bay Hospital"]
+    },
+    "Portland": {
+      "count": 1,
+      "names": ["Port Antonio Hospital"]
+    },
+    "St. Thomas": {
+      "count": 1,
+      "names": ["Princess Margaret Hospital"]
+    }
+  },
+
+  "health_centres_by_parish": {
+    "Kingston": {
+      "count": 2,
+      "names": ["Comprehensive Health Centre", "Windward Road Health Centre"]
+    },
+    "St. Andrew": {
+      "count": 3,
+      "names": ["Hope Clinic", "Half Way Tree Health Centre", "Hagley Park Health Centre"]
+    },
+    "St. Catherine": {
+      "count": 3,
+      "names": ["Portmore Health Centre", "Old Harbour Health Centre", "Bog Walk Health Centre"]
+    },
+    "Clarendon": {
+      "count": 2,
+      "names": ["May Pen Health Centre", "Chapelton Health Centre"]
+    },
+    "Manchester": {
+      "count": 2,
+      "names": ["Mandeville Health Centre", "Christiana Health Centre"]
+    },
+    "St. Elizabeth": {
+      "count": 3,
+      "names": ["Black River Health Centre", "Junction Health Centre", "Santa Cruz Health Centre"]
+    },
+    "Westmoreland": {
+      "count": 2,
+      "names": ["Savanna-la-Mar Health Centre", "Darliston Health Centre"]
+    },
+    "Hanover": {
+      "count": 2,
+      "names": ["Lucea Health Centre", "Sandy Bay Health Centre"]
+    },
+    "St. James": {
+      "count": 3,
+      "names": ["Montego Bay Health Centre", "Granville Health Centre", "Irwin Health Centre"]
+    },
+    "Trelawny": {
+      "count": 2,
+      "names": ["Falmouth Health Centre", "Clark's Town Health Centre"]
+    },
+    "St. Ann": {
+      "count": 3,
+      "names": ["St. Ann's Bay Health Centre", "Ocho Rios Health Centre", "Brown's Town Health Centre"]
+    },
+    "St. Mary": {
+      "count": 2,
+      "names": ["Port Maria Health Centre", "Highgate Health Centre"]
+    },
+    "Portland": {
+      "count": 2,
+      "names": ["Port Antonio Health Centre", "Buff Bay Health Centre"]
+    },
+    "St. Thomas": {
+      "count": 2,
+      "names": ["Morant Bay Health Centre", "Yallahs Health Centre"]
+    }
+  },
+
+  "regional_authorities": {
+    "nerha": {
+      "name": "NERHA",
+      "full_name": "North East Regional Health Authority",
+      "parishes": ["St. Ann", "St. Mary", "Portland"]
+    },
+    "wrha": {
+      "name": "WRHA",
+      "full_name": "Western Regional Health Authority",
+      "parishes": ["St. James", "Trelawny", "Hanover", "Westmoreland"]
+    },
+    "srha": {
+      "name": "SRHA",
+      "full_name": "Southern Regional Health Authority",
+      "parishes": ["Clarendon", "Manchester", "St. Elizabeth", "St. Catherine"]
+    },
+    "serha": {
+      "name": "SERHA",
+      "full_name": "South East Regional Health Authority",
+      "parishes": ["Kingston", "St. Andrew", "St. Thomas"]
+    }
+  },
+
+  "parish_to_region": {
+    "Kingston": "serha",
+    "St. Andrew": "serha",
+    "St. Thomas": "serha",
+    "St. Catherine": "srha",
+    "Clarendon": "srha",
+    "Manchester": "srha",
+    "St. Elizabeth": "srha",
+    "St. James": "wrha",
+    "Trelawny": "wrha",
+    "Hanover": "wrha",
+    "Westmoreland": "wrha",
+    "St. Ann": "nerha",
+    "St. Mary": "nerha",
+    "Portland": "nerha"
+  },
+
+  "search_tests": [
+    {
+      "query": "Kingston",
+      "expected_contains": "Kingston Public Hospital",
+      "min_results": 1
+    },
+    {
+      "query": "cornwall",
+      "expected_contains": "Cornwall Regional Hospital",
+      "min_results": 1
+    },
+    {
+      "query": "Bustamante",
+      "expected_contains": "Bustamante Hospital for Children",
+      "exact_count": 1
+    },
+    {
+      "query": "Bay",
+      "min_results": 2
+    },
+    {
+      "query": "xyznonexistent",
+      "exact_count": 0
+    }
+  ],
+
+  "nearest_facility_tests": [
+    {
+      "description": "Downtown Kingston -> Bustamante Hospital for Children (marginally closer than KPH)",
+      "lat": 18.015,
+      "lng": -76.795,
+      "type": null,
+      "expected_name": "Bustamante Hospital for Children"
+    },
+    {
+      "description": "Near Montego Bay -> Cornwall Regional Hospital (hospital only)",
+      "lat": 18.47,
+      "lng": -77.92,
+      "type": "hospital",
+      "expected_name": "Cornwall Regional Hospital"
+    },
+    {
+      "description": "Near Falmouth -> Falmouth Hospital",
+      "lat": 18.49,
+      "lng": -77.66,
+      "type": null,
+      "expected_name": "Falmouth Hospital"
+    },
+    {
+      "description": "East Portland -> Port Antonio Hospital (hospital only)",
+      "lat": 18.18,
+      "lng": -76.45,
+      "type": "hospital",
+      "expected_name": "Port Antonio Hospital"
+    },
+    {
+      "description": "Health-centre filter -> null (no health centres have coordinates)",
+      "lat": 18.0,
+      "lng": -76.8,
+      "type": "health-centre",
+      "expected_name": null
+    }
+  ],
+
+  "specializations": [
+    {
+      "name": "Victoria Jubilee Hospital",
+      "specialization": "maternity"
+    },
+    {
+      "name": "Bellevue Hospital",
+      "specialization": "psychiatric"
+    }
+  ]
+}

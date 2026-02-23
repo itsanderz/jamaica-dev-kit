@@ -1,0 +1,9 @@
+[project]
+name = "jamaica-gov-fees"
+version = "0.1.0"
+description = "Jamaica government service fees database"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

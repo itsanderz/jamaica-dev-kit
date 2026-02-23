@@ -1,0 +1,26 @@
+{
+  "name": "jamaica-open-data",
+  "version": "0.1.0",
+  "description": "Client for the Jamaica Open Data Portal (data.gov.jm) — search datasets, fetch resources, and query the DKAN datastore API",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "import": "./dist/index.mjs", "require": "./dist/index.js", "types": "./dist/index.d.ts" }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/"
+  },
+  "keywords": ["jamaica", "open-data", "data-gov-jm", "dkan", "government", "datasets"],
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@jamaica-digital/tsconfig": "workspace:*",
+    "tsup": "^8.0.0",
+    "vitest": "^3.0.0",
+    "typescript": "^5.7.0"
+  }
+}

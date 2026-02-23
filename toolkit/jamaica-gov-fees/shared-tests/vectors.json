@@ -1,0 +1,137 @@
+{
+  "description": "Test vectors for jamaica-gov-fees toolkit package",
+  "vectors": {
+    "getAgencies": {
+      "expected_count": 10,
+      "expected_ids": ["pica", "nira", "taj", "ita", "coj", "nla", "nepa", "police", "trade_board", "labour"]
+    },
+    "getAgency": [
+      {
+        "input": "pica",
+        "expected_name": "Passport, Immigration and Citizenship Agency",
+        "expected_acronym": "PICA"
+      },
+      {
+        "input": "taj",
+        "expected_name": "Tax Administration Jamaica",
+        "expected_acronym": "TAJ"
+      },
+      {
+        "input": "nonexistent",
+        "expected": null
+      }
+    ],
+    "getPassportFee": [
+      {
+        "input": { "type": "new", "age": "adult", "speed": "standard", "office": "kingston" },
+        "expected": 6500
+      },
+      {
+        "input": { "type": "new", "age": "adult", "speed": "rush_3day" },
+        "expected": 9500
+      },
+      {
+        "input": { "type": "new", "age": "adult", "speed": "rush_1day" },
+        "expected": 11500
+      },
+      {
+        "input": { "type": "new", "age": "adult", "speed": "same_day" },
+        "expected": 16500
+      },
+      {
+        "input": { "type": "replacement", "age": "adult", "speed": "standard" },
+        "expected": 11500
+      },
+      {
+        "input": { "type": "replacement", "age": "adult", "speed": "rush_3day" },
+        "expected": 14500
+      },
+      {
+        "input": { "type": "new", "age": "minor", "speed": "standard", "office": "kingston" },
+        "expected": 4000
+      },
+      {
+        "input": { "type": "new", "age": "minor", "speed": "same_day" },
+        "expected": 9000
+      },
+      {
+        "input": { "type": "replacement", "age": "minor", "speed": "standard" },
+        "expected": 7000
+      },
+      {
+        "input": { "type": "new", "age": "adult", "speed": "standard", "office": "regional" },
+        "expected": 9500
+      }
+    ],
+    "getVehicleRegistrationFee": [
+      { "input": 1000, "expected": 18480 },
+      { "input": 1199, "expected": 18480 },
+      { "input": 1200, "expected": 25200 },
+      { "input": 2500, "expected": 25200 },
+      { "input": 3000, "expected": 57600 },
+      { "input": 3500, "expected": 57600 },
+      { "input": 4000, "expected": 87650 },
+      { "input": 5000, "expected": 87650 }
+    ],
+    "getCertificateOfFitnessFee": [
+      { "input": "private_motor_vehicle", "expected": 4500 },
+      { "input": "motorcycle", "expected": 4500 },
+      { "input": "trailer_tractor", "expected": 5400 },
+      { "input": "ppv_l_form", "expected": 3240 },
+      { "input": "public_commercial", "expected": 5400 }
+    ],
+    "getDriversLicenceFee": [
+      { "input": "private", "expected": 5400 },
+      { "input": "general", "expected": 7200 },
+      { "input": "motorcycle", "expected": 4140 }
+    ],
+    "getBusinessRegistrationFee": [
+      { "input": "sole_trader", "expected": 2500 },
+      { "input": "partnership_small", "expected": 2500 },
+      { "input": "partnership_large", "expected": 5000 },
+      { "input": "company", "expected": 27000 }
+    ],
+    "getVitalRecordFee": [
+      { "input": { "type": "birth", "speed": "same_day" }, "expected": 7500 },
+      { "input": { "type": "birth", "speed": "next_day" }, "expected": 6000 },
+      { "input": { "type": "death", "speed": "same_day" }, "expected": 7500 },
+      { "input": { "type": "death", "speed": "next_day" }, "expected": 6000 },
+      { "input": { "type": "marriage", "speed": "same_day" }, "expected": 7500 },
+      { "input": { "type": "marriage", "speed": "next_day" }, "expected": 6000 }
+    ],
+    "getPoliceRecordFee": [
+      { "input": "regular", "expected": 3000 },
+      { "input": "express", "expected": 6000 }
+    ],
+    "searchFees": [
+      {
+        "input": "passport",
+        "expected_min_results": 1,
+        "description": "Should find passport-related fees"
+      },
+      {
+        "input": "motorcycle",
+        "expected_min_results": 1,
+        "description": "Should find motorcycle-related fees"
+      },
+      {
+        "input": "birth",
+        "expected_min_results": 1,
+        "description": "Should find birth certificate fees"
+      },
+      {
+        "input": "zzzznonexistent",
+        "expected_count": 0,
+        "description": "Should return empty for nonsense query"
+      }
+    ],
+    "getAllFees": {
+      "expected_min_count": 30,
+      "description": "Should return a flat list of all fees"
+    },
+    "constants": {
+      "EXCHANGE_RATE": 155.47,
+      "DATA_DATE": "2026-02-22"
+    }
+  }
+}

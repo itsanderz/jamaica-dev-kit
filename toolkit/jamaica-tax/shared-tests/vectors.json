@@ -1,0 +1,313 @@
+{
+  "description": "Shared test vectors for Jamaica tax calculations (tax year 2024)",
+  "incomeTax": [
+    {
+      "id": "zero-income",
+      "description": "Zero income produces zero tax",
+      "annualIncome": 0,
+      "expected": {
+        "threshold": 1500096,
+        "taxableIncome": 0,
+        "tax": 0,
+        "effectiveRate": 0,
+        "brackets": []
+      }
+    },
+    {
+      "id": "below-threshold",
+      "description": "Income below threshold — no tax",
+      "annualIncome": 1200000,
+      "expected": {
+        "threshold": 1500096,
+        "taxableIncome": 0,
+        "tax": 0,
+        "effectiveRate": 0,
+        "brackets": []
+      }
+    },
+    {
+      "id": "at-threshold",
+      "description": "Income exactly at threshold — no tax",
+      "annualIncome": 1500096,
+      "expected": {
+        "threshold": 1500096,
+        "taxableIncome": 0,
+        "tax": 0,
+        "effectiveRate": 0,
+        "brackets": []
+      }
+    },
+    {
+      "id": "first-bracket-only",
+      "description": "Income in 25% bracket (J$2,400,000 annual)",
+      "annualIncome": 2400000,
+      "expected": {
+        "threshold": 1500096,
+        "taxableIncome": 899904,
+        "tax": 224976,
+        "effectiveRate": 0.09,
+        "brackets": [
+          { "bracket": "25%", "taxableInThisBracket": 899904, "tax": 224976 }
+        ]
+      }
+    },
+    {
+      "id": "top-of-first-bracket",
+      "description": "Income at top of 25% bracket (J$7,500,096)",
+      "annualIncome": 7500096,
+      "expected": {
+        "threshold": 1500096,
+        "taxableIncome": 6000000,
+        "tax": 1500000,
+        "effectiveRate": 0.2,
+        "brackets": [
+          { "bracket": "25%", "taxableInThisBracket": 6000000, "tax": 1500000 }
+        ]
+      }
+    },
+    {
+      "id": "both-brackets",
+      "description": "Income spanning both brackets (J$12,000,000 annual)",
+      "annualIncome": 12000000,
+      "expected": {
+        "threshold": 1500096,
+        "taxableIncome": 10499904,
+        "tax": 2849971.2,
+        "effectiveRate": 0.24,
+        "brackets": [
+          { "bracket": "25%", "taxableInThisBracket": 6000000, "tax": 1500000 },
+          { "bracket": "30%", "taxableInThisBracket": 4499904, "tax": 1349971.2 }
+        ]
+      }
+    },
+    {
+      "id": "very-high-income",
+      "description": "Very high income (J$50,000,000 annual)",
+      "annualIncome": 50000000,
+      "expected": {
+        "threshold": 1500096,
+        "taxableIncome": 48499904,
+        "tax": 14249971.2,
+        "effectiveRate": 0.28,
+        "brackets": [
+          { "bracket": "25%", "taxableInThisBracket": 6000000, "tax": 1500000 },
+          { "bracket": "30%", "taxableInThisBracket": 42499904, "tax": 12749971.2 }
+        ]
+      }
+    }
+  ],
+  "nis": [
+    {
+      "id": "nis-zero",
+      "description": "Zero income",
+      "annualGross": 0,
+      "expected": {
+        "employee": 0,
+        "employer": 0,
+        "total": 0,
+        "atCeiling": false
+      }
+    },
+    {
+      "id": "nis-below-ceiling",
+      "description": "Annual gross below NIS ceiling (J$2,400,000)",
+      "annualGross": 2400000,
+      "expected": {
+        "employee": 72000,
+        "employer": 72000,
+        "total": 144000,
+        "atCeiling": false
+      }
+    },
+    {
+      "id": "nis-at-ceiling",
+      "description": "Annual gross exactly at NIS ceiling (J$5,000,000)",
+      "annualGross": 5000000,
+      "expected": {
+        "employee": 150000,
+        "employer": 150000,
+        "total": 300000,
+        "atCeiling": true
+      }
+    },
+    {
+      "id": "nis-above-ceiling",
+      "description": "Annual gross above NIS ceiling (J$12,000,000)",
+      "annualGross": 12000000,
+      "expected": {
+        "employee": 150000,
+        "employer": 150000,
+        "total": 300000,
+        "atCeiling": true
+      }
+    }
+  ],
+  "nht": [
+    {
+      "id": "nht-200k",
+      "description": "NHT on J$200,000 gross",
+      "grossPay": 200000,
+      "expected": {
+        "employee": 4000,
+        "employer": 6000,
+        "total": 10000
+      }
+    },
+    {
+      "id": "nht-1m",
+      "description": "NHT on J$1,000,000 gross",
+      "grossPay": 1000000,
+      "expected": {
+        "employee": 20000,
+        "employer": 30000,
+        "total": 50000
+      }
+    }
+  ],
+  "educationTax": [
+    {
+      "id": "edtax-200k",
+      "description": "Education Tax on J$200,000 gross",
+      "grossPay": 200000,
+      "expected": {
+        "employee": 4500,
+        "employer": 7000,
+        "total": 11500
+      }
+    },
+    {
+      "id": "edtax-1m",
+      "description": "Education Tax on J$1,000,000 gross",
+      "grossPay": 1000000,
+      "expected": {
+        "employee": 22500,
+        "employer": 35000,
+        "total": 57500
+      }
+    }
+  ],
+  "heart": [
+    {
+      "id": "heart-200k",
+      "description": "HEART/NTA on J$200,000 gross",
+      "grossPay": 200000,
+      "expected": 6000
+    },
+    {
+      "id": "heart-1m",
+      "description": "HEART/NTA on J$1,000,000 gross",
+      "grossPay": 1000000,
+      "expected": 30000
+    }
+  ],
+  "payroll": [
+    {
+      "id": "payroll-zero",
+      "description": "Zero monthly salary",
+      "grossPay": 0,
+      "period": "monthly",
+      "expected": {
+        "period": "monthly",
+        "grossPay": 0,
+        "annualized": 0,
+        "incomeTax": 0,
+        "nis": 0,
+        "nht": 0,
+        "educationTax": 0,
+        "totalDeductions": 0,
+        "netPay": 0,
+        "employerNIS": 0,
+        "employerNHT": 0,
+        "employerEducationTax": 0,
+        "employerHEART": 0,
+        "totalEmployerContributions": 0,
+        "totalCostToEmployer": 0
+      }
+    },
+    {
+      "id": "payroll-200k-monthly",
+      "description": "Monthly salary of J$200,000",
+      "grossPay": 200000,
+      "period": "monthly",
+      "expected": {
+        "period": "monthly",
+        "grossPay": 200000,
+        "annualized": 2400000,
+        "incomeTax": 18748,
+        "nis": 6000,
+        "nht": 4000,
+        "educationTax": 4500,
+        "totalDeductions": 33248,
+        "netPay": 166752,
+        "employerNIS": 6000,
+        "employerNHT": 6000,
+        "employerEducationTax": 7000,
+        "employerHEART": 6000,
+        "totalEmployerContributions": 25000,
+        "totalCostToEmployer": 225000
+      }
+    },
+    {
+      "id": "payroll-1m-monthly",
+      "description": "Monthly salary of J$1,000,000",
+      "grossPay": 1000000,
+      "period": "monthly",
+      "expected": {
+        "period": "monthly",
+        "grossPay": 1000000,
+        "annualized": 12000000,
+        "incomeTax": 237497.6,
+        "nis": 12500,
+        "nht": 20000,
+        "educationTax": 22500,
+        "totalDeductions": 292497.6,
+        "netPay": 707502.4,
+        "employerNIS": 12500,
+        "employerNHT": 30000,
+        "employerEducationTax": 35000,
+        "employerHEART": 30000,
+        "totalEmployerContributions": 107500,
+        "totalCostToEmployer": 1107500
+      }
+    },
+    {
+      "id": "payroll-100k-monthly",
+      "description": "Monthly salary of J$100,000 (below threshold)",
+      "grossPay": 100000,
+      "period": "monthly",
+      "expected": {
+        "period": "monthly",
+        "grossPay": 100000,
+        "annualized": 1200000,
+        "incomeTax": 0,
+        "nis": 3000,
+        "nht": 2000,
+        "educationTax": 2250,
+        "totalDeductions": 7250,
+        "netPay": 92750,
+        "employerNIS": 3000,
+        "employerNHT": 3000,
+        "employerEducationTax": 3500,
+        "employerHEART": 3000,
+        "totalEmployerContributions": 12500,
+        "totalCostToEmployer": 112500
+      }
+    }
+  ],
+  "validation": [
+    {
+      "id": "negative-income",
+      "description": "Negative income should throw",
+      "function": "calculateIncomeTax",
+      "input": -100000,
+      "shouldThrow": true
+    },
+    {
+      "id": "negative-gross",
+      "description": "Negative gross should throw",
+      "function": "calculatePayroll",
+      "input": -50000,
+      "shouldThrow": true
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+[project]
+name = "jamaica-currency"
+version = "0.1.0"
+description = "JMD currency formatting, parsing, and conversion utilities"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

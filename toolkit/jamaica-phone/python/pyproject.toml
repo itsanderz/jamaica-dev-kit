@@ -1,0 +1,9 @@
+[project]
+name = "jamaica-phone"
+version = "0.1.0"
+description = "Jamaica phone number validation and formatting (+1-876/+1-658)"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

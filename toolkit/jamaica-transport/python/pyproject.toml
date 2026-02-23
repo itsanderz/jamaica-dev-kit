@@ -1,0 +1,9 @@
+[project]
+name = "jamaica-transport"
+version = "0.1.0"
+description = "Jamaica transport infrastructure — airports, seaports, vehicle classifications, and road network"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

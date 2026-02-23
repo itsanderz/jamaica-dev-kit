@@ -1,0 +1,206 @@
+{
+  "description": "Shared test vectors for jamaica-places (TypeScript + Python)",
+  "version": "0.1.0",
+  "parishes": [
+    "Kingston",
+    "St. Andrew",
+    "St. Catherine",
+    "Clarendon",
+    "Manchester",
+    "St. Elizabeth",
+    "Westmoreland",
+    "Hanover",
+    "St. James",
+    "Trelawny",
+    "St. Ann",
+    "St. Mary",
+    "Portland",
+    "St. Thomas"
+  ],
+  "total_parish_count": 14,
+  "minimum_total_places": 200,
+  "minimum_places_per_parish": 7,
+  "get_place": {
+    "existing": [
+      {
+        "input": "Kingston",
+        "expected": {
+          "name": "Kingston",
+          "type": "city",
+          "parish": "Kingston",
+          "population": 89057,
+          "description": "Capital city of Jamaica"
+        }
+      },
+      {
+        "input": "Montego Bay",
+        "expected": {
+          "name": "Montego Bay",
+          "type": "town",
+          "parish": "St. James",
+          "population": 110115
+        }
+      },
+      {
+        "input": "Spanish Town",
+        "expected": {
+          "name": "Spanish Town",
+          "type": "town",
+          "parish": "St. Catherine",
+          "population": 147152
+        }
+      },
+      {
+        "input": "Portmore",
+        "expected": {
+          "name": "Portmore",
+          "type": "town",
+          "parish": "St. Catherine",
+          "population": 182000
+        }
+      },
+      {
+        "input": "Mandeville",
+        "expected": {
+          "name": "Mandeville",
+          "type": "town",
+          "parish": "Manchester",
+          "population": 47000
+        }
+      },
+      {
+        "input": "May Pen",
+        "expected": {
+          "name": "May Pen",
+          "type": "town",
+          "parish": "Clarendon",
+          "population": 50000
+        }
+      },
+      {
+        "input": "Falmouth",
+        "expected": {
+          "name": "Falmouth",
+          "type": "town",
+          "parish": "Trelawny",
+          "population": 8000
+        }
+      },
+      {
+        "input": "Morant Bay",
+        "expected": {
+          "name": "Morant Bay",
+          "type": "town",
+          "parish": "St. Thomas",
+          "population": 10000
+        }
+      },
+      {
+        "input": "Port Antonio",
+        "expected": {
+          "name": "Port Antonio",
+          "type": "town",
+          "parish": "Portland",
+          "population": 14000
+        }
+      },
+      {
+        "input": "Half Way Tree",
+        "expected": {
+          "name": "Half Way Tree",
+          "type": "town",
+          "parish": "St. Andrew",
+          "population": 28000
+        }
+      }
+    ],
+    "case_insensitive": [
+      { "input": "montego bay", "expected_name": "Montego Bay" },
+      { "input": "KINGSTON", "expected_name": "Kingston" },
+      { "input": "half way tree", "expected_name": "Half Way Tree" },
+      { "input": "port antonio", "expected_name": "Port Antonio" }
+    ],
+    "not_found": [
+      "Hogwarts",
+      "Atlantis",
+      "xyzzyplugh",
+      ""
+    ]
+  },
+  "get_places_by_parish": {
+    "parish_capitals": {
+      "Kingston": "Kingston",
+      "St. Andrew": "Half Way Tree",
+      "St. Catherine": "Spanish Town",
+      "Clarendon": "May Pen",
+      "Manchester": "Mandeville",
+      "St. Elizabeth": "Black River",
+      "Westmoreland": "Savanna-la-Mar",
+      "Hanover": "Lucea",
+      "St. James": "Montego Bay",
+      "Trelawny": "Falmouth",
+      "St. Ann": "St. Ann's Bay",
+      "St. Mary": "Port Maria",
+      "Portland": "Port Antonio",
+      "St. Thomas": "Morant Bay"
+    }
+  },
+  "get_places_by_type": {
+    "city": {
+      "min_count": 1,
+      "max_count": 1,
+      "must_include": ["Kingston"]
+    },
+    "town": {
+      "min_count": 15,
+      "must_include": ["Montego Bay", "Spanish Town", "Portmore", "Mandeville", "May Pen"]
+    },
+    "community": {
+      "min_count": 50
+    },
+    "village": {
+      "min_count": 1,
+      "must_include": ["Irish Town"]
+    }
+  },
+  "get_towns": {
+    "must_include": ["Kingston", "Montego Bay", "Spanish Town", "Portmore"],
+    "must_not_include_types": ["community", "district", "village"]
+  },
+  "get_communities": {
+    "Kingston": {
+      "must_include": ["New Kingston", "Port Royal"],
+      "must_not_include": ["Kingston"]
+    },
+    "St. Andrew": {
+      "must_include": ["Mona", "Barbican", "Liguanea"],
+      "must_not_include": ["Half Way Tree", "Stony Hill"]
+    }
+  },
+  "search_places": [
+    {
+      "query": "bay",
+      "min_results": 4,
+      "must_include": ["Montego Bay", "Annotto Bay"]
+    },
+    {
+      "query": "port",
+      "min_results": 4,
+      "must_include": ["Portmore", "Port Antonio"]
+    },
+    {
+      "query": "town",
+      "min_results": 5
+    },
+    {
+      "query": "New Kingston",
+      "min_results": 1,
+      "must_include": ["New Kingston"]
+    },
+    {
+      "query": "xyzzyplugh",
+      "min_results": 0,
+      "max_results": 0
+    }
+  ]
+}

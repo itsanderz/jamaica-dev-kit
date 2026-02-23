@@ -1,0 +1,9 @@
+[project]
+name = "jamaica-trn"
+version = "0.1.0"
+description = "Jamaica Tax Registration Number (TRN) validator and formatter"
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

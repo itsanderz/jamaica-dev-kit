@@ -27,6 +27,30 @@ This project exists because local developers regularly have to rebuild the same 
 - Practical OSS shaped around real product workflows, not just demos
 - Available in both TypeScript and Python for wider adoption
 
+## Why This Repository Matters
+
+Most global developer tooling ignores country-specific implementation details for Jamaica. This repository closes that gap with reusable primitives for:
+
+- tax and payroll calculations
+- identity and phone validation
+- parish, constituency, and location data
+- public-service directories and government fee lookups
+- live data integrations for Jamaica-specific workflows
+
+That makes the repository useful to fintech, govtech, HR, logistics, education, healthcare, and internal business software built for Jamaica.
+
+## Maintainer Scope
+
+This is not a single-library repository. Ongoing maintenance spans:
+
+- 21 public toolkit packages across TypeScript and Python
+- shared test fixtures to keep both language implementations aligned
+- example applications that demonstrate production usage
+- docs and interactive playgrounds hosted on GitHub Pages
+- release metadata, issue triage, and contribution workflows
+
+More detail is in [MAINTAINERSHIP.md](MAINTAINERSHIP.md).
+
 ## Quick Start
 
 ```bash
@@ -113,6 +137,14 @@ The repo includes runnable examples and apps that show the toolkit in actual pro
 - Docs site: [https://itsanderz.github.io/jamaica-dev-kit/](https://itsanderz.github.io/jamaica-dev-kit/)
 - Contribution guide: [CONTRIBUTING.md](CONTRIBUTING.md)
 - Code of conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+
+## Project Status
+
+- Public repository with GitHub Pages documentation
+- MIT licensed
+- Issue templates and pull request template in place
+- TypeScript and Python implementations maintained in one monorepo
+- CI, docs deployment, and release workflows configured under `.github/workflows/`
 
 ## Development
 

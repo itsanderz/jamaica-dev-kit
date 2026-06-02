@@ -1,7 +1,7 @@
 [project]
 name = "jamaica-constants"
 version = "0.1.0"
-description = "Jamaica country constants — codes, timezone, symbols, and national data"
+description = "Jamaica country constants -- codes, timezone, symbols, and national data"
 requires-python = ">=3.11"
 license = {text = "MIT"}
 authors = [{name = "Jamaica Digital", email = "oss@jamaica.digital"}]
@@ -16,9 +16,9 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://jamaica.digital"
-Documentation = "https://jamaica.digital/packages/constants"
-Repository = "https://github.com/jamaica-digital/jamaica"
+Homepage = "https://itsanderz.github.io/jamaica-dev-kit/"
+Documentation = "https://itsanderz.github.io/jamaica-dev-kit/"
+Repository = "https://github.com/itsanderz/jamaica-dev-kit"
 
 [build-system]
 requires = ["hatchling"]

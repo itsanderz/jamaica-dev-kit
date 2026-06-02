@@ -1,7 +1,7 @@
 {
   "name": "jamaica-open-data",
   "version": "0.1.0",
-  "description": "Client for the Jamaica Open Data Portal (data.gov.jm) — search datasets, fetch resources, and query the DKAN datastore API",
+  "description": "Client for the Jamaica Open Data Portal (data.gov.jm) -- search datasets, fetch resources, and query the DKAN datastore API",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -18,11 +18,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jamaica-digital/jamaica.git",
+    "url": "https://github.com/itsanderz/jamaica-dev-kit.git",
     "directory": "toolkit/jamaica-open-data/ts"
   },
-  "homepage": "https://jamaica.digital/packages/open-data",
-  "bugs": "https://github.com/jamaica-digital/jamaica/issues",
+  "homepage": "https://itsanderz.github.io/jamaica-dev-kit/",
+  "bugs": "https://github.com/itsanderz/jamaica-dev-kit/issues",
   "publishConfig": {
     "access": "public"
   },

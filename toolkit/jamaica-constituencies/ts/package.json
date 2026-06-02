@@ -1,7 +1,7 @@
 {
   "name": "jamaica-constituencies",
   "version": "0.1.0",
-  "description": "Jamaica electoral constituencies — all 63 constituencies with parish mapping",
+  "description": "Jamaica electoral constituencies -- all 63 constituencies with parish mapping",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -18,11 +18,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jamaica-digital/jamaica.git",
+    "url": "https://github.com/itsanderz/jamaica-dev-kit.git",
     "directory": "toolkit/jamaica-constituencies/ts"
   },
-  "homepage": "https://jamaica.digital/packages/constituencies",
-  "bugs": "https://github.com/jamaica-digital/jamaica/issues",
+  "homepage": "https://itsanderz.github.io/jamaica-dev-kit/",
+  "bugs": "https://github.com/itsanderz/jamaica-dev-kit/issues",
   "publishConfig": {
     "access": "public"
   },

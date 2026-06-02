@@ -1,7 +1,7 @@
 {
   "name": "jamaica-boj",
   "version": "0.1.0",
-  "description": "Bank of Jamaica exchange rate client — live FX rates, historical rates, and caching for JMD currency pairs",
+  "description": "Bank of Jamaica exchange rate client -- live FX rates, historical rates, and caching for JMD currency pairs",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -18,11 +18,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jamaica-digital/jamaica.git",
+    "url": "https://github.com/itsanderz/jamaica-dev-kit.git",
     "directory": "toolkit/jamaica-boj/ts"
   },
-  "homepage": "https://jamaica.digital/packages/boj",
-  "bugs": "https://github.com/jamaica-digital/jamaica/issues",
+  "homepage": "https://itsanderz.github.io/jamaica-dev-kit/",
+  "bugs": "https://github.com/itsanderz/jamaica-dev-kit/issues",
   "publishConfig": {
     "access": "public"
   },

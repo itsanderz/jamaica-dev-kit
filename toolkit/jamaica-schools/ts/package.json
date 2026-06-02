@@ -1,7 +1,7 @@
 {
   "name": "jamaica-schools",
   "version": "0.1.0",
-  "description": "Jamaica schools and universities directory — search, filter by parish, type, and level",
+  "description": "Jamaica schools and universities directory -- search, filter by parish, type, and level",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -18,11 +18,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jamaica-digital/jamaica.git",
+    "url": "https://github.com/itsanderz/jamaica-dev-kit.git",
     "directory": "toolkit/jamaica-schools/ts"
   },
-  "homepage": "https://jamaica.digital/packages/schools",
-  "bugs": "https://github.com/jamaica-digital/jamaica/issues",
+  "homepage": "https://itsanderz.github.io/jamaica-dev-kit/",
+  "bugs": "https://github.com/itsanderz/jamaica-dev-kit/issues",
   "publishConfig": {
     "access": "public"
   },

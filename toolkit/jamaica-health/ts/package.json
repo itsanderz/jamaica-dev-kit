@@ -1,7 +1,7 @@
 {
   "name": "jamaica-health",
   "version": "0.1.0",
-  "description": "Jamaica health facilities directory — hospitals, health centres, and regional health authorities",
+  "description": "Jamaica health facilities directory -- hospitals, health centres, and regional health authorities",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -18,11 +18,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jamaica-digital/jamaica.git",
+    "url": "https://github.com/itsanderz/jamaica-dev-kit.git",
     "directory": "toolkit/jamaica-health/ts"
   },
-  "homepage": "https://jamaica.digital/packages/health",
-  "bugs": "https://github.com/jamaica-digital/jamaica/issues",
+  "homepage": "https://itsanderz.github.io/jamaica-dev-kit/",
+  "bugs": "https://github.com/itsanderz/jamaica-dev-kit/issues",
   "publishConfig": {
     "access": "public"
   },

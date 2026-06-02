@@ -16,9 +16,9 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://jamaica.digital"
-Documentation = "https://jamaica.digital/packages/trn"
-Repository = "https://github.com/jamaica-digital/jamaica"
+Homepage = "https://itsanderz.github.io/jamaica-dev-kit/"
+Documentation = "https://itsanderz.github.io/jamaica-dev-kit/"
+Repository = "https://github.com/itsanderz/jamaica-dev-kit"
 
 [build-system]
 requires = ["hatchling"]

@@ -5,7 +5,10 @@ Production-ready open-source infrastructure for building Jamaica-focused softwar
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Node: 22+](https://img.shields.io/badge/Node-22%2B-339933.svg)](https://nodejs.org/)
 [![Python: 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB.svg)](https://www.python.org/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/itsanderz/jamaica-dev-kit/pulls)
+[![CI](https://img.shields.io/github/actions/workflow/status/itsanderz/jamaica-dev-kit/ci.yml?branch=master&label=CI)](https://github.com/itsanderz/jamaica-dev-kit/actions/workflows/ci.yml)
+[![Docs](https://img.shields.io/github/actions/workflow/status/itsanderz/jamaica-dev-kit/deploy-docs.yml?branch=master&label=Docs)](https://github.com/itsanderz/jamaica-dev-kit/actions/workflows/deploy-docs.yml)
+[![Release](https://img.shields.io/github/actions/workflow/status/itsanderz/jamaica-dev-kit/publish.yml?branch=master&label=Release)](https://github.com/itsanderz/jamaica-dev-kit/actions/workflows/publish.yml)
+[![GitHub Release](https://img.shields.io/github/v/release/itsanderz/jamaica-dev-kit?display_name=tag&label=GitHub%20release)](https://github.com/itsanderz/jamaica-dev-kit/releases/latest)
 
 ## What It Is
 
@@ -53,8 +56,13 @@ More detail is in [MAINTAINERSHIP.md](MAINTAINERSHIP.md).
 
 ## Quick Start
 
+Package publication to npm and PyPI is still being prepared. Until that is configured, use the monorepo from source:
+
 ```bash
-npm install jamaica
+git clone https://github.com/itsanderz/jamaica-dev-kit.git
+cd jamaica-dev-kit
+pnpm install
+pnpm build
 ```
 
 ```ts
@@ -63,6 +71,8 @@ import { calculatePayroll } from "jamaica/tax";
 import { formatJMD } from "jamaica/currency";
 import { getParish } from "jamaica/parishes";
 ```
+
+See issue [#2](https://github.com/itsanderz/jamaica-dev-kit/issues/2) for package publication work across npm and PyPI.
 
 ## Package Coverage
 
@@ -125,10 +135,10 @@ The repo includes runnable examples and apps that show the toolkit in actual pro
 
 | App | Description |
 |-----|-------------|
-| **Payroll Calculator** | Jamaican payroll calculations with tax and currency formatting |
-| **Parish Dashboard** | Explore parishes with schools, health, emergency, and places data |
-| **Gov Services Portal** | Government fees, TRN validation, formatted costs, and business-day logic |
-| **Checkout Demo** | Commerce flow with JMD currency, addresses, parishes, and phone validation |
+| [Payroll Calculator](examples/payroll-calculator) | Jamaican payroll calculations with tax and currency formatting |
+| [Parish Dashboard](examples/parish-dashboard) | Explore parishes with schools, health, emergency, and places data |
+| [Gov Services Portal](examples/gov-services-portal) | Government fees, TRN validation, formatted costs, and business-day logic |
+| [Checkout Demo](examples/checkout-demo) | Commerce flow with JMD currency, addresses, parishes, and phone validation |
 | **Addressing Web / API** | Addressing and geocoding-oriented tools and services |
 | **AI Assistant Web / API** | AI-assisted retrieval and workflow examples on top of toolkit data |
 
@@ -141,9 +151,11 @@ The repo includes runnable examples and apps that show the toolkit in actual pro
 ## Project Status
 
 - Public repository with GitHub Pages documentation
+- Initial public GitHub release: [`v0.1.0`](https://github.com/itsanderz/jamaica-dev-kit/releases/tag/v0.1.0)
 - MIT licensed
 - Issue templates and pull request template in place
 - TypeScript and Python implementations maintained in one monorepo
+- Package publication work is tracked publicly before npm/PyPI release
 - CI, docs deployment, and release workflows configured under `.github/workflows/`
 
 ## Development

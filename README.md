@@ -73,6 +73,7 @@ import { getParish } from "jamaica/parishes";
 ```
 
 See issue [#2](https://github.com/itsanderz/jamaica-dev-kit/issues/2) for package publication work across npm and PyPI.
+See [PUBLICATION_STATUS.md](PUBLICATION_STATUS.md) for the current release state and verified registry-name collisions.
 
 ## Package Coverage
 
@@ -156,6 +157,7 @@ The repo includes runnable examples and apps that show the toolkit in actual pro
 - Issue templates and pull request template in place
 - TypeScript and Python implementations maintained in one monorepo
 - Package publication work is tracked publicly before npm/PyPI release
+- Publication status and package-name collision tracking are documented in [PUBLICATION_STATUS.md](PUBLICATION_STATUS.md)
 - CI, docs deployment, and release workflows configured under `.github/workflows/`
 
 ## Development

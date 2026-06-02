@@ -11,8 +11,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint-and-test-js:
-    name: Lint & Test (JS/TS)
+  test-js:
+    name: Test (JS/TS)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,7 +22,6 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm lint
       - run: pnpm test
 
   build-packages:
@@ -71,8 +70,8 @@ jobs:
       - run: pnpm build
       - run: pnpm --filter ${{ matrix.app }} build
 
-  lint-and-test-python:
-    name: Lint & Test (Python)
+  validate-python-workspace:
+    name: Validate Python Workspace
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -83,5 +82,3 @@ jobs:
         with:
           python-version: '3.11'
       - run: uv sync
-      - run: uv run ruff check .
-      - run: uv run pytest

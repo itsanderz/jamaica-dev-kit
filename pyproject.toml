@@ -34,6 +34,25 @@ dev-dependencies = [
   "ruff>=0.9.0",
 ]
 
+[tool.uv.sources]
+jamaica-trn = { workspace = true }
+jamaica-parishes = { workspace = true }
+jamaica-phone = { workspace = true }
+jamaica-currency = { workspace = true }
+jamaica-gov-fees = { workspace = true }
+jamaica-addresses = { workspace = true }
+jamaica-constants = { workspace = true }
+jamaica-holidays = { workspace = true }
+jamaica-tax = { workspace = true }
+jamaica-schools = { workspace = true }
+jamaica-health = { workspace = true }
+jamaica-banks = { workspace = true }
+jamaica-constituencies = { workspace = true }
+jamaica-transport = { workspace = true }
+jamaica-emergency = { workspace = true }
+jamaica-places = { workspace = true }
+jamaica = { workspace = true }
+
 [tool.ruff]
 target-version = "py311"
 line-length = 100

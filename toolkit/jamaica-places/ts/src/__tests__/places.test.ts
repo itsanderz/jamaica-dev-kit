@@ -9,7 +9,6 @@ import {
   searchPlaces,
   getPlaceCount,
   getPlaceCountByParish,
-  type Place,
   type PlaceType,
 } from '../index';
 

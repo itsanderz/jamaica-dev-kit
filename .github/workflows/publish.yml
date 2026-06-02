@@ -16,16 +16,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Detect pending changesets
+        id: detect_changesets
+        shell: bash
+        run: |
+          count=$(find .changeset -maxdepth 1 -name '*.md' ! -name 'README.md' | wc -l)
+          echo "count=${count}" >> "$GITHUB_OUTPUT"
+      - name: Skip when no changesets are present
+        if: steps.detect_changesets.outputs.count == '0'
+        run: echo "No changesets found. Skipping release workflow."
       - uses: pnpm/action-setup@v4
+        if: steps.detect_changesets.outputs.count != '0'
       - uses: actions/setup-node@v4
+        if: steps.detect_changesets.outputs.count != '0'
         with:
           node-version: 22
           cache: pnpm
           registry-url: 'https://registry.npmjs.org'
       - run: pnpm install --frozen-lockfile
+        if: steps.detect_changesets.outputs.count != '0'
       - run: pnpm build
+        if: steps.detect_changesets.outputs.count != '0'
       - name: Create Release PR or Publish
         id: changesets
+        if: steps.detect_changesets.outputs.count != '0'
         uses: changesets/action@v1
         with:
           publish: pnpm release

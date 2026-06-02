@@ -12,9 +12,6 @@
     "payroll-calculator",
     "parish-dashboard",
     "gov-services-portal",
-    "checkout-demo",
-    "@jamaica-digital/eslint-config",
-    "@jamaica-digital/tsconfig",
-    "@jamaica-digital/ui"
+    "checkout-demo"
   ]
 }

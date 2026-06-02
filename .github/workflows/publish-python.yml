@@ -24,11 +24,32 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  preflight:
+    name: Check publishing configuration
+    runs-on: ubuntu-latest
+    outputs:
+      publishing_enabled: ${{ steps.check.outputs.publishing_enabled }}
+    steps:
+      - name: Determine whether PyPI publishing is enabled
+        id: check
+        env:
+          PYPI_PUBLISH_ENABLED: ${{ vars.PYPI_PUBLISH_ENABLED }}
+        run: |
+          if [[ "${PYPI_PUBLISH_ENABLED}" == "true" ]]; then
+            echo "publishing_enabled=true" >> "$GITHUB_OUTPUT"
+            echo "PyPI publishing is enabled for this repository." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "publishing_enabled=false" >> "$GITHUB_OUTPUT"
+            echo "PyPI publishing is disabled. Set repository variable PYPI_PUBLISH_ENABLED=true after configuring trusted publishing or PYPI_TOKEN." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
   # ---------------------------------------------------------------------------
   # 1. Discover which packages to build & publish
   # ---------------------------------------------------------------------------
   discover:
     name: Discover packages
+    needs: preflight
+    if: needs.preflight.outputs.publishing_enabled == 'true'
     runs-on: ubuntu-latest
     outputs:
       packages: ${{ steps.list.outputs.packages }}
@@ -65,7 +86,8 @@ jobs:
   # ---------------------------------------------------------------------------
   publish:
     name: "Publish ${{ matrix.package }}"
-    needs: discover
+    needs: [preflight, discover]
+    if: needs.preflight.outputs.publishing_enabled == 'true'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false

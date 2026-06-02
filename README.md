@@ -143,6 +143,20 @@ The repo includes runnable examples and apps that show the toolkit in actual pro
 | **Addressing Web / API** | Addressing and geocoding-oriented tools and services |
 | **AI Assistant Web / API** | AI-assisted retrieval and workflow examples on top of toolkit data |
 
+## Sector Coverage
+
+The docs site includes sector-specific guides that show how the toolkit maps to real Jamaica-focused software domains:
+
+- [Fintech](apps/docs/sectors/fintech.md)
+- [Government & Civic Tech](apps/docs/sectors/government.md)
+- [HR & Payroll](apps/docs/sectors/hr-payroll.md)
+- [Logistics & Delivery](apps/docs/sectors/logistics.md)
+- [Education](apps/docs/sectors/education.md)
+- [Healthcare](apps/docs/sectors/health.md)
+- [E-commerce](apps/docs/sectors/ecommerce.md)
+- [Civic Tech](apps/docs/sectors/civic-tech.md)
+- [Diaspora Services](apps/docs/sectors/diaspora.md)
+
 ## Documentation
 
 - Docs site: [https://itsanderz.github.io/jamaica-dev-kit/](https://itsanderz.github.io/jamaica-dev-kit/)

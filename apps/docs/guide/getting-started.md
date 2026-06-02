@@ -4,33 +4,33 @@ The Jamaica Developer Kit is a collection of open-source packages for building J
 
 ## Why?
 
-Jamaica has 83-85% internet penetration and growing developer community, but zero Jamaica-specific packages on npm or PyPI. This toolkit fills that gap with production-ready, well-tested utilities.
+Jamaica has strong internet adoption and a growing developer community, but very limited Jamaica-specific tooling on mainstream package registries. This toolkit is meant to close that gap with production-focused, reusable utilities.
 
 ## Choose Your Approach
 
-### Option 1: Meta-package (recommended)
+### Option 1: Use the monorepo from source (recommended right now)
 
-Install everything at once:
+Package publication is still being prepared, so the safest current path is to use the repo directly:
 
-::: code-group
-```bash [npm]
-npm install jamaica
+```bash
+git clone https://github.com/itsanderz/jamaica-dev-kit.git
+cd jamaica-dev-kit
+pnpm install
+pnpm build
 ```
-```bash [pip]
-pip install jamaica
-```
-:::
 
 ```typescript
 import { formatTRN, getAllParishes, formatJMD } from 'jamaica';
 ```
 
-### Option 2: Individual packages
+### Option 2: Plan around package names
 
-Install only what you need:
+The package names below are the intended npm/PyPI publication targets:
 
 ```bash
-npm install jamaica-trn jamaica-currency
+jamaica-trn
+jamaica-currency
+jamaica-parishes
 ```
 
 ```typescript
@@ -40,29 +40,25 @@ import { formatJMD } from 'jamaica-currency';
 
 ### Option 3: CLI
 
-Install the CLI globally for quick lookups:
+The CLI exists in the monorepo, but global package publication is still pending:
 
 ```bash
-npm install -g jamaica-cli
-
-jamaica trn validate 123-456-784
-jamaica parish list
-jamaica fees search passport
+pnpm --filter jamaica-cli test
 ```
 
 ## Package Overview
 
 | Package | Description | npm | PyPI |
 |---------|-------------|-----|------|
-| `jamaica` | Meta-package (includes all below) | `jamaica` | `jamaica` |
-| `jamaica-trn` | TRN validation and formatting | `jamaica-trn` | `jamaica-trn` |
-| `jamaica-parishes` | 14 parishes with full data | `jamaica-parishes` | `jamaica-parishes` |
-| `jamaica-phone` | Phone validation (+1-876/+1-658) | `jamaica-phone` | `jamaica-phone` |
-| `jamaica-currency` | JMD formatting, GCT calculations | `jamaica-currency` | `jamaica-currency` |
-| `jamaica-gov-fees` | Government fees (10 agencies) | `jamaica-gov-fees` | `jamaica-gov-fees` |
-| `jamaica-addresses` | Informal address parser | `jamaica-addresses` | `jamaica-addresses` |
-| `jamaica-constants` | Country codes, timezone, symbols | `jamaica-constants` | `jamaica-constants` |
-| `jamaica-holidays` | Public holidays, business days | `jamaica-holidays` | `jamaica-holidays` |
+| `jamaica` | Meta-package (includes all below) | planned | planned |
+| `jamaica-trn` | TRN validation and formatting | planned | planned |
+| `jamaica-parishes` | 14 parishes with full data | planned | planned |
+| `jamaica-phone` | Phone validation (+1-876/+1-658) | planned | planned |
+| `jamaica-currency` | JMD formatting, GCT calculations | planned | planned |
+| `jamaica-gov-fees` | Government fees (10 agencies) | planned | planned |
+| `jamaica-addresses` | Informal address parser | planned | planned |
+| `jamaica-constants` | Country codes, timezone, symbols | planned | planned |
+| `jamaica-holidays` | Public holidays, business days | planned | planned |
 
 ## Next Steps
 
@@ -70,3 +66,4 @@ jamaica fees search passport
 - [Quick start with examples](/guide/quick-start)
 - [Package reference](/packages/overview)
 - [CLI documentation](/cli/)
+- [Public package release tracking](https://github.com/itsanderz/jamaica-dev-kit/issues/2)

@@ -7,16 +7,13 @@
 ## Installation
 
 ```bash
-# Install everything
-npm install jamaica        # TypeScript/JavaScript
-pip install jamaica        # Python
-
-# Or install individual packages
-npm install jamaica-trn jamaica-phone jamaica-currency
-pip install jamaica-trn jamaica-phone jamaica-currency
-
-# CLI
-npm install -g jamaica-cli
+# Package publication is still being prepared.
+# Current supported path: use the monorepo from source
+git clone https://github.com/itsanderz/jamaica-dev-kit.git
+cd jamaica-dev-kit
+pnpm install
+pnpm build
+uv sync
 ```
 
 ## Import Patterns

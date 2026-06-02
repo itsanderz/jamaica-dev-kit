@@ -7,44 +7,29 @@
 
 ## TypeScript / JavaScript
 
-::: code-group
-```bash [npm]
-npm install jamaica
-```
-```bash [pnpm]
-pnpm add jamaica
-```
-```bash [yarn]
-yarn add jamaica
-```
-:::
-
-Or install individual packages:
+Package publication to npm is still being prepared. For now, use the monorepo from source:
 
 ```bash
-npm install jamaica-trn jamaica-parishes jamaica-currency
+git clone https://github.com/itsanderz/jamaica-dev-kit.git
+cd jamaica-dev-kit
+pnpm install
+pnpm build
 ```
 
 ## Python
 
-```bash
-pip install jamaica
-```
-
-Or with uv:
+Package publication to PyPI is still being prepared. Use the monorepo from source for now:
 
 ```bash
-uv add jamaica
+git clone https://github.com/itsanderz/jamaica-dev-kit.git
+cd jamaica-dev-kit
+uv sync
 ```
 
 ## CLI
 
-```bash
-npm install -g jamaica-cli
-```
+The CLI package is part of the monorepo and is not yet published as a global npm package.
 
-Verify installation:
+Tracked release work:
 
-```bash
-jamaica --version
-```
+- [Prepare first public package release across npm and PyPI](https://github.com/itsanderz/jamaica-dev-kit/issues/2)
